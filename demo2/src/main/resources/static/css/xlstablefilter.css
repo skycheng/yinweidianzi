@@ -1,0 +1,39 @@
+#xlsFilterAllNone {
+	text-align: right;
+}
+#xlsFilterAll {
+	text-decoration: underline; cursor: pointer;
+}
+#xlsFilterNone {
+	text-decoration: underline; cursor: pointer;
+}
+#xlsFilterRows {
+	border: 1px solid rgb(153, 153, 153); border-image: none; color: rgb(0, 0, 0); margin-top: 5px; background-color: rgb(242, 247, 252);
+}
+div.xlsFilterRow {
+	padding: 1px 1px 1px 32px; height: auto !important; text-indent: -12px; cursor: pointer; min-height: 18px;
+}
+div.xlsFilterRow:hover {
+	background-color: rgb(255, 255, 215);
+}
+div.xlsFilterRow input {
+	margin: 0px 0px 0px 3px;
+}
+.xlsFilterCheck {
+	margin: 0px 5px 0px -30px; width: 16px; height: 16px; float: left;
+}
+#xlsFilterRows div.xlsFilterCheckOn {
+	background: url("../images/checkbox-on.png") no-repeat center;
+}
+#xlsFilterRows div.xlsFilterCheckOff {
+	background: url("../images/checkbox-off.png") no-repeat center;
+}
+.xlsFilterHeader {
+	cursor: pointer !important;
+}
+.xlsNoFilterHeader {
+	cursor: default !important;
+}
+.xlsFilteredColumn {
+	background-color: rgb(255, 255, 215) !important;
+}

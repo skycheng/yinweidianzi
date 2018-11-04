@@ -1,0 +1,98 @@
+body {
+	margin: 0px; padding: 0px;
+}
+div {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+ul {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+li {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+img {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+a {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+table {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+p {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+dl {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+dt {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+dd {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+span {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+em {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+h1 {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+h2 {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+h3 {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+h4 {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+h5 {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+h6 {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+input {
+	background: none; margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+ul {
+	list-style: none;
+}
+input {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; font-family: Arial, Helvetica, sans-serif; background-color: transparent;
+}
+input {
+	
+}
+select {
+	
+}
+textarea {
+	
+}
+textarea {
+	resize: none;
+}
+a {
+	text-decoration: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+a:hover {
+	cursor: pointer;
+}
+a:focus {
+	-moz-outline: none;
+}
+.clearfix::after {
+	clear: both; display: block; content: "";
+}
+.clearfix {
+	-ms-zoom: 1;
+}
+.contents{line-height:31px; padding:3px 0px 5px 0px;font-family: 'Microsoft YaHei';}
+.flash img{ width: 100%}
+.flash ul.bxslider{list-style:none;}
+.flash div.bx-pager{bottom: 4%;}
+.flash div.bx-controls-direction{ display:none; }

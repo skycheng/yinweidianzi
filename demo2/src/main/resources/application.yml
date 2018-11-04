@@ -1,0 +1,13 @@
+server:
+  port: 8889
+spring:
+  datasource:
+    url: jdbc:mysql://rm-wz910i9474lm35eu2wo.mysql.rds.aliyuncs.com:3306/firstdb?autoReconnect=true&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root1234
+    password: 967163qQ
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
