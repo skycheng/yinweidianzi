@@ -22,6 +22,15 @@ public class Multisection {
 	private String jiancedianyaduanlu;
 	private String jiancedianyachongdianguoliu;
 	private String qidongdianyapingheng;
+	private String fangdianzhuangtaijiancedianya;
+
+	public String getFangdianzhuangtaijiancedianya() {
+		return fangdianzhuangtaijiancedianya;
+	}
+
+	public void setFangdianzhuangtaijiancedianya(String fangdianzhuangtaijiancedianya) {
+		this.fangdianzhuangtaijiancedianya = fangdianzhuangtaijiancedianya;
+	}
 
 	public Integer getId() {
 		return id;
