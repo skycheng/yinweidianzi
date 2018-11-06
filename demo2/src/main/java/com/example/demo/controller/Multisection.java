@@ -11,7 +11,7 @@ public class Multisection {
 	private Integer id;
 	private String partnum;
 	private String package2;
-	private String zhengchanggonghao;
+	private String gonghao;
 	private String xiumiangonghao;
 	private String jiancedianyaguochongdian;
 	private String jiechudianyaguochongdian;
@@ -57,11 +57,11 @@ public class Multisection {
 	}
 
 	public String getZhengchanggonghao() {
-		return zhengchanggonghao;
+		return gonghao;
 	}
 
 	public void setZhengchanggonghao(String zhengchanggonghao) {
-		this.zhengchanggonghao = zhengchanggonghao;
+		this.gonghao = zhengchanggonghao;
 	}
 
 	public String getXiumiangonghao() {

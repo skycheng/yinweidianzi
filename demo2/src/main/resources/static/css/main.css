@@ -167,10 +167,10 @@ body {
 	width: 1034px; text-align: center; white-space: nowrap; border-collapse: collapse;
 }
 .dataTb thead {
-	background: rgb(100, 149, 237); color: rgb(255, 255, 255); font-size: 14px; font-weight: bold;
+	background: rgb(100, 149, 237); color: rgb(255, 255, 255); font-size: 13px; font-weight: bold;
 }
 .dataTb tbody {
-	color: rgb(100, 149, 237); font-size: 14px;
+	color: rgb(100, 149, 237); font-size: 13px;
 }
 .dataTb tbody tr:hover {
 	background: rgb(217, 237, 247);

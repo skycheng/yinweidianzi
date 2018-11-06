@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE HTML>
-
-<!DOCTYPE html PUBLIC "" "">
+>
 <HTML>
 <HEAD>
 <META content="IE=11.0000" http-equiv="X-UA-Compatible">
@@ -68,9 +67,7 @@
 		<DIV class="navWrap">
 			<DIV class="comWidth clearfix">
 				<DIV class="logo lf">
-					<A title="银鹏威" href="default.htm">
-						
-					</A>
+					<A title="银鹏威" href="default.htm"> </A>
 				</DIV>
 				<UL class="nav lf" id="nky">
 					<LI><A href="default.htm">首页</A></LI>
@@ -106,14 +103,84 @@
 						<script type="text/javascript">
 						
 						
-							$(document).ready(function() {
+							$(function() {
 								$.ajax({
 									type : 'Get',
-									url : 'http://localhost:8889/girls',
+									url : 'http://localhost:8889/findAllMosfets',
 									data : {},
-									success : function(data) {
-										var jsondata = JSON.stringify(data);
-									alert(jsondata);
+									success : function(jsondata) {
+						
+										var data = JSON.stringify(jsondata);
+										alert(jsondata[1]);
+										//alert(data.length);
+										var s = '<THEAD>'+
+							'<TR>'+
+								'<TH rowspan="2">Part Num</TH>'+
+								'<TH rowspan="2">Package</TH>'+
+								'<TH rowspan="2">Configuration</TH>'+
+								'<TH rowspan="2">ESD<BR> Diode</TH>'+
+								'<TH rowspan="2">Vds(V)</TH>'+
+								'<TH rowspan="2">Vgs(±V)</TH>'+
+								'<TH rowspan="2">Id(A)</TH>'+
+								'<TH rowspan="2">Vgs(th)(typ V)</TH>'+
+								'<TH>10V</TH>'+
+								'<TH>4.5V</TH>'+
+								'<TH>2.5V</TH>'+
+								'<TH>1.8V</TH>'+
+							'</TR>'+
+							'<TR>'+
+								'<TH colspan="4">Rds(on)(mΩ typ) at Vgs=</TH>'+
+							'</TR>'+
+						'</THEAD>'+
+						'<TBODY>';
+										for (var i = 0; i < jsondata.length; i++) {
+											var temps = '<TR>' +
+												'<TD><A' +
+												'href="http://www.semi-one.com/upload/201803/27/201803271324599072.pdf"' +
+												'target="_blank"><I class="down"></I>' + jsondata[i].partNum + '</A></TD>' +
+						
+												'<TD>' + jsondata[i].package2 + '</TD>' +
+												'<TD>' + jsondata[i].configuration + '</TD>' +
+												'<TD>' + jsondata[i].esd + '</TD>' +
+												'<TD>' + jsondata[i].vds + '</TD>' +
+												'<TD>' + jsondata[i].vgs + '</TD>' +
+												'<TD>' + jsondata[i].id2 + '</TD>' +
+												'<TD>' + jsondata[i].vgs2 + '</TD>' +
+												'<TD>' + jsondata[i].v100 + '</TD>' +
+												'<TD>' + jsondata[i].v45 + '</TD>' +
+												'<TD>' + jsondata[i].v25 + '</TD>' +
+												'<TD>' + jsondata[i].v18 + '</TD>' +
+						
+												'</TR>';
+											s = s + temps;
+						
+										}
+										s = s + '</TBODY>';
+						
+										$("#deviceTable").html(s);
+										$("#deviceTable").xlsTableFilter();
+						
+										$('#deviceTable').dataTable({
+											"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
+											"bStateSave" : true, //状态保存
+											"aoColumnDefs" : [
+												//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+												{
+													"orderable" : false,
+													"aTargets" : [ 0, 2 ]
+												} // 指定列那些列参与排序，第一到第五列参与排序
+											]
+										});
+						
+										$('.table-sort tbody').on('click', 'tr', function() {
+											if ($(this).hasClass('selected')) {
+												$(this).removeClass('selected');
+											} else {
+												table.$('tr.selected').removeClass('selected');
+												$(this).addClass('selected');
+											}
+										});
+						
 									}
 								});
 						
@@ -122,97 +189,13 @@
 					</DIV>
 					<TABLE class="dataTb" id="deviceTable" border="0" cellspacing="0"
 						cellpadding="0">
-						<THEAD>
-							<TR>
-								<TH rowspan="2">Part Num</TH>
-								<TH rowspan="2">Package</TH>
-								<TH rowspan="2">Configuration</TH>
-								<TH rowspan="2">ESD<BR> Diode
-								</TH>
-								<TH rowspan="2">Vds(V)</TH>
-								<TH rowspan="2">Vgs(±V)</TH>
-								<TH rowspan="2">Id(A)</TH>
-								<TH rowspan="2">Vgs(th)(typ V)</TH>
-								<TH>10V</TH>
-								<TH>4.5V</TH>
-								<TH>2.5V</TH>
-								<TH>1.8V</TH>
-							</TR>
-							<TR>
-								<TH colspan="4">Rds(on)(mΩ typ) at Vgs=</TH>
-							</TR>
-						</THEAD>
-						<TBODY>
-							<TR>
-								<TD><A
-									href="http://www.semi-one.com/upload/201803/27/201803271324599072.pdf"
-									target="_blank"><I class="down"></I>PE0053A</A></TD>
-								<TD>SOT-23</TD>
-								<TD>S-N</TD>
-								<TD></TD>
-								<TD>60</TD>
-								<TD>20</TD>
-								<TD>3</TD>
-								<TD>1.2</TD>
-								<TD>87</TD>
-								<TD>95</TD>
-								<TD></TD>
-								<TD></TD>
-							</TR>
-							<TR>
-								<TD><A
-									href="http://www.semi-one.com/upload/201803/27/201803271338106416.pdf"
-									target="_blank"><I class="down"></I>PE02N05A</A></TD>
-								<TD>SOT-23</TD>
-								<TD>S-N</TD>
-								<TD></TD>
-								<TD>60</TD>
-								<TD>20</TD>
-								<TD>2.8</TD>
-								<TD>1</TD>
-								<TD>87</TD>
-								<TD>95</TD>
-								<TD>130</TD>
-								<TD></TD>
-							</TR>
-							
-						</TBODY>
+
+
 					</TABLE>
 				</DIV>
 			</DIV>
 		</DIV>
-		<SCRIPT type="text/javascript">
-			$(function() {
-		
-				$("#deviceTable").xlsTableFilter();
-		
-			});
-		
-		
-			$(function() {
-		
-				$('#deviceTable').dataTable({
-					"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
-					"bStateSave" : true, //状态保存
-					"aoColumnDefs" : [
-						//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-						{
-							"orderable" : false,
-							"aTargets" : [ 0, 2 ]
-						} // 指定列那些列参与排序，第一到第五列参与排序
-					]
-				});
-		
-				$('.table-sort tbody').on('click', 'tr', function() {
-					if ($(this).hasClass('selected')) {
-						$(this).removeClass('selected');
-					} else {
-						table.$('tr.selected').removeClass('selected');
-						$(this).addClass('selected');
-					}
-				});
-			});
-		</SCRIPT>
+
 		<!--底部信息开始-->
 		<DIV class="footer">
 			<DIV class="footLink">
