@@ -101,9 +101,9 @@
 
 				<DIV class="rightCon lr">
 					<DIV class="proTit clearfix">
-						<A class="outInfo"
-							onclick="return ExcellentExport.excel(this, 'deviceTable', 'deviceTable');"
-							href="http://www.semi-one.com/product.aspx#" download="data.xls">导出</A>
+						<A class="outInfo" id="outInfo2"
+							
+							href="#" download="data.xls">导出</A>
 						点击标题进行筛选
 						<script type="text/javascript">
 						
@@ -120,23 +120,23 @@
 										//alert(data.length);
 										var s = '<THEAD>' +
 											'<TR>' +
-											'<TH rowspan="2">产品型号</TH>' +
-											'<TH rowspan="2">封装形式</TH>' +
-											'<TH rowspan="2">过充阀<BR>值(v)</TH>' +
-											'<TH rowspan="2">过放阀<BR>值(v)</TH>' +
+											'<TH rowspan="3">产品型号</TH>' +
+											'<TH rowspan="3">封装形式</TH>' +
+											'<TH rowspan="3">过充阀<BR>值(v)</TH>' +
+											'<TH rowspan="3">过放阀<BR>值(v)</TH>' +
 						
-											'<TH rowspan="2">放电过流<BR>阀值(v)</TH>' +
-											'<TH rowspan="2">充电过流<BR>阀值(v)</TH>' +
-											'<TH rowspan="2">过充保<BR>护延时<BR>(s)</TH>' +
-											'<TH rowspan="2">过放保<BR>护延时<BR>(ms)</TH>' +
-											'<TH rowspan="2">放电过<BR>流保护<BR>延时(ms)</TH>' +
-											'<TH rowspan="2">充电过<BR>流保护<BR>延时(ms)</TH>' +
-											'<TH rowspan="2">正常功<BR>耗(uA)</TH>' +
-											'<TH rowspan="2">休眠功<BR>耗(uA)</TH>' +
-											'<TH rowspan="2">休眠<BR>自<BR>恢复</TH>' +
-											'<TH rowspan="2">OV<BR>充电</TH>' +
-											'<TH rowspan="2">漏源间<BR>击穿电<BR>压（v)</TH>' +
-											'<TH rowspan="2">RSS(ON<BR>)@3.9V<BR>(mO)</TH>' +
+											'<TH rowspan="3">放电过流<BR>阀值(v)</TH>' +
+											'<TH rowspan="3">充电过流<BR>阀值(v)</TH>' +
+											'<TH rowspan="3">过充保<BR>护延时<BR>(s)</TH>' +
+											'<TH rowspan="3">过放保<BR>护延时<BR>(ms)</TH>' +
+											'<TH rowspan="3">放电过<BR>流保护<BR>延时(ms)</TH>' +
+											'<TH rowspan="3">充电过<BR>流保护<BR>延时(ms)</TH>' +
+											'<TH rowspan="3">正常功<BR>耗(uA)</TH>' +
+											'<TH rowspan="3">休眠功<BR>耗(uA)</TH>' +
+											'<TH rowspan="3">休眠<BR>自<BR>恢复</TH>' +
+											'<TH rowspan="3">OV<BR>充电</TH>' +
+											'<TH rowspan="3">漏源间<BR>击穿电<BR>压（v)</TH>' +
+											'<TH rowspan="3">RSS(ON<BR>)@3.9V<BR>(mO)</TH>' +
 						
 											'</TR>' +
 						
@@ -167,9 +167,15 @@
 						
 										}
 										s = s + '</TBODY>';
-										
+						
 										$("#deviceTable").html(s);
 										$("#deviceTable").xlsTableFilter();
+										$("#outInfo2").click(function() {
+										alert($("#outInfo2"));
+						
+											return ExcellentExport.excel($("#outInfo2"), 'deviceTable', 'deviceTable');
+						
+										});
 						
 										$('#deviceTable').dataTable({
 											"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
