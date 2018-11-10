@@ -20,6 +20,7 @@
 <SCRIPT src="js/jquery-ui.min.js" type="text/javascript"></SCRIPT>
 
 <SCRIPT src="js/jquery.xlstablefilter.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="js/jquery.table2excel.js" type="text/javascript"></SCRIPT>
 
 <META name="GENERATOR" content="MSHTML 11.00.9600.19130">
 </HEAD>
@@ -67,9 +68,7 @@
 		<DIV class="navWrap">
 			<DIV class="comWidth clearfix">
 				<DIV class="logo lf">
-					<A title="银鹏威" href="default.htm">
-						
-					</A>
+					<A title="银鹏威" href="default.htm"> </A>
 				</DIV>
 				<UL class="nav lf" id="nky">
 					<LI><A href="default.htm">首页</A></LI>
@@ -99,9 +98,8 @@
 
 				<DIV class="rightCon lr">
 					<DIV class="proTit clearfix">
-						<A class="outInfo"
-							onclick="return ExcellentExport.excel(this, 'deviceTable', 'deviceTable');"
-							href="http://www.semi-one.com/product.aspx#" download="data.xls">导出</A>
+						<A class="outInfo" id="btn123"
+							>导出</A>
 						点击标题进行筛选
 						<script type="text/javascript">
 						
@@ -118,43 +116,46 @@
 										//alert(data.length);
 										/**var s = '<THEAD>' +
 											'<TR>' +
-											'<TH rowspan="2">产品型号</TH>' +
-											'<TH rowspan="2">封装形式</TH>' +
-											'<TH rowspan="2">功耗ICC</TH>' +
-											'<TH rowspan="2">过充电检测电压<BR>VDET1<BR>±25mV</TH>' +
-						
-											'<TH rowspan="2">过充电解除电压<BR>VREL1<BR>±50mV</TH>' +
-											'<TH rowspan="2">过放电检测电压<BR>VDET2<BR>±80mV</TH>' +
-											'<TH rowspan="2">过放电解除电压<BR>VREL2<BR>±100mV</TH>' +
-											'<TH rowspan="2">放电过流1检测电压<BR>VOC1<BR>±15mV</TH>' +
-											'<TH rowspan="2">放电过流2检测电压<BR>VOC2<BR>±30mV</TH>' +
-											'<TH rowspan="2">短路检测电压<BR>Vshort<BR>±60mV</TH>' +
-											'<TH rowspan="2">充电过流检测电压<BR>VOVCC<BR>±15mV</TH>' +
-											'<TH rowspan="2">平衡启动电压<BR>VBAL<BR>±50mV</TH>' +
-											'<TH rowspan="2">放电状态<BR>检测电压<BR>Vldet</TH>' +*/
-											var s = '<THEAD>' +
+											'<TH >产品型号</TH>' +
+											'<TH >封装形式</TH>' +
+											'<TH >功耗ICC</TH>' +
+											'<TH >过充电检测电压<BR>VDET1<BR>±25mV</TH>' +
+														
+											'<TH >过充电解除电压<BR>VREL1<BR>±50mV</TH>' +
+											'<TH >过放电检测电压<BR>VDET2<BR>±80mV</TH>' +
+											'<TH >过放电解除电压<BR>VREL2<BR>±100mV</TH>' +
+											'<TH >放电过流1检测电压<BR>VOC1<BR>±15mV</TH>' +
+											'<TH >放电过流2检测电压<BR>VOC2<BR>±30mV</TH>' +
+											'<TH >短路检测电压<BR>Vshort<BR>±60mV</TH>' +
+											'<TH >充电过流检测电压<BR>VOVCC<BR>±15mV</TH>' +
+											'<TH >平衡启动电压<BR>VBAL<BR>±50mV</TH>' +
+											'<TH >放电状态<BR>检测电压<BR>Vldet</TH>' +*/
+										var s = '<THEAD>' +
 											'<TR>' +
-											'<TH rowspan="2">产品型号</TH>' +
-											'<TH rowspan="2">封装形式</TH>' +
-											'<TH rowspan="2">功耗ICC</TH>' +
-											'<TH rowspan="2">过充电<BR>检测电压</TH>' +
+											'<TH >产品型号</TH>' +
+											'<TH >封装形式</TH>' +
+											'<TH >功耗ICC</TH>' +
+											'<TH >过充电<BR>检测电压</TH>' +
 						
-											'<TH rowspan="2">过充电<BR>解除电压</TH>' +
-											'<TH rowspan="2">过放电<BR>检测电压</TH>' +
-											'<TH rowspan="2">过放电<BR>解除电压</TH>' +
-											'<TH rowspan="2">放电过流1<BR>检测电压</TH>' +
-											'<TH rowspan="2">放电过流2<BR>检测电压</TH>' +
-											'<TH rowspan="2">短路检<BR>测电压</TH>' +
-											'<TH rowspan="2">充电过流<BR>检测电压</TH>' +
-											'<TH rowspan="2">平衡启<BR>动电压</TH>' +
-											'<TH rowspan="2">放电状态<BR>检测电压</TH>' +
-											
+											'<TH >过充电<BR>解除电压</TH>' +
+											'<TH >过放电<BR>检测电压</TH>' +
+											'<TH >过放电<BR>解除电压</TH>' +
+											'<TH >放电过流1<BR>检测电压</TH>' +
+											'<TH >放电过流2<BR>检测电压</TH>' +
+											'<TH >短路检<BR>测电压</TH>' +
+											'<TH >充电过流<BR>检测电压</TH>' +
+											'<TH >平衡启<BR>动电压</TH>' +
+											'<TH >放电状态<BR>检测电压</TH>' +
+						'</TR>' +
+						
+											'</THEAD>' +
 											'<TBODY>';
 										for (var i = 0; i < jsondata.length; i++) {
 											var temps = '<TR>' +
-												'<TD><A' +
-												'href="http://www.semi-one.com/upload/201803/27/201803271324599072.pdf"' +
-												'target="_blank"><I class="down"></I>' + jsondata[i].partnum + '</A></TD>' +
+												'<TD><A ' +
+												'href="#"' +
+												' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
+						
 												'<TD>' + jsondata[i].package2 + '</TD>' +
 												'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
 												'<TD>' + jsondata[i].jiancedianyaguochongdian + '</TD>' +
@@ -167,15 +168,34 @@
 												'<TD>' + jsondata[i].jiancedianyachongdianguoliu + '</TD>' +
 												'<TD>' + jsondata[i].qidongdianyapingheng + '</TD>' +
 												'<TD>' + jsondata[i].fangdianzhuangtaijiancedianya + '</TD>' +
-												
+						
 												'</TR>';
 											s = s + temps;
 						
 										}
 										s = s + '</TBODY>';
-										
+						
 										$("#deviceTable").html(s);
+										
 										$("#deviceTable").xlsTableFilter();
+										$("#btn123").click(function() {
+											$("#deviceTable").table2excel({
+												// 不被导出的表格行的CSS class类
+												exclude : ".noExl",
+												// 导出的Excel文档的名称
+												name : "Excel Document Name",
+												// Excel文件的名称
+												filename : "test",
+												//文件后缀名
+												fileext : ".xls",
+												//是否排除导出图片
+												exclude_img : false,
+												//是否排除导出超链接
+												exclude_links : false,
+												//是否排除导出输入框中的内容
+												exclude_inputs : false
+											});
+										});
 						
 										$('#deviceTable').dataTable({
 											"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
@@ -206,7 +226,7 @@
 					</DIV>
 					<TABLE class="dataTb" id="deviceTable" border="0" cellspacing="0"
 						cellpadding="0">
-						
+
 					</TABLE>
 				</DIV>
 			</DIV>

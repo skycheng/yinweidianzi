@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE HTML>
-
+>
 <HTML>
 <HEAD>
 <META content="IE=11.0000" http-equiv="X-UA-Compatible">
@@ -20,7 +20,6 @@
 <SCRIPT src="js/jquery-ui.min.js" type="text/javascript"></SCRIPT>
 
 <SCRIPT src="js/jquery.xlstablefilter.js" type="text/javascript"></SCRIPT>
-<SCRIPT src="js/jquery.table2excel.js" type="text/javascript"></SCRIPT>
 
 <META name="GENERATOR" content="MSHTML 11.00.9600.19130">
 </HEAD>
@@ -79,11 +78,7 @@
 				</UL>
 				<DIV class="searchWrap lr">
 
-					<DIV class="searchCon">
-						<INPUT name="CtrlTop1$tbText" class="search" id="CtrlTop1_tbText"
-							type="text"> <INPUT name="CtrlTop1$btnFind"
-							class="searchBtn" id="CtrlTop1_btnFind" type="submit" value=''>
-					</DIV>
+					<DIV class="searchCon"></DIV>
 				</DIV>
 			</DIV>
 		</DIV>
@@ -94,137 +89,494 @@
 				<UL class="leftMenu lf">
 					<LI class="menuName">产品分类</LI>
 
-					<LI class="active"><A href="single_section.htm">单节锂电保护 IC</A></LI>
+					<LI><A href="single_section.htm">单节锂电保护 IC</A></LI>
 					<LI><A href="multi_section.htm">多节锂电保护 IC</A></LI>
-					<LI><A href="mosfet.htm">MOSFET</A></LI>
+					<LI class="active"><A href="mosfet.htm">MOSFET</A></LI>
 				</UL>
-				<!--右侧内容-->
 
 				<DIV class="rightCon lr">
 					<DIV class="proTit clearfix">
-						<A class="outInfo" id="btn123">导出</A> 点击标题进行筛选
+						<A class="outInfo"
+							onclick="return ExcellentExport.excel(this, 'deviceTable', 'deviceTable');"
+							href="http://www.semi-one.com/product.aspx#" download="data.xls">导出</A>
+						点击标题进行筛选
 						<script type="text/javascript">
-							function initdata(jsondata) {
-								var data = JSON.stringify(jsondata);
-								//alert(jsondata.length);
-								//alert(data.length);
-								var s = '<THEAD>' +
-									'<TR>' +
-									'<TH >产品型号</TH>' +
-									'<TH >封装形式</TH>' +
-									'<TH >过充阀<BR>值(v)</TH>' +
-									'<TH >过放阀<BR>值(v)</TH>' +
-						
-									'<TH >放电过流<BR>阀值(v)</TH>' +
-									'<TH >充电过流<BR>阀值(v)</TH>' +
-									'<TH >过充保<BR>护延时<BR>(s)</TH>' +
-									'<TH >过放保<BR>护延时<BR>(ms)</TH>' +
-									'<TH >放电过<BR>流保护<BR>延时(ms)</TH>' +
-									'<TH >充电过<BR>流保护<BR>延时(ms)</TH>' +
-									'<TH >正常功<BR>耗(uA)</TH>' +
-									'<TH >休眠功<BR>耗(uA)</TH>' +
-									'<TH >休眠<BR>自<BR>恢复</TH>' +
-									'<TH >OV<BR>充电</TH>' +
-									'<TH >漏源间<BR>击穿电<BR>压（v)</TH>' +
-									'<TH >RSS(ON<BR>)@3.9V<BR>(mO)</TH>' +
-						
-									'</TR>' +
-						
-									'</THEAD>' +
-									'<TBODY>';
-								for (var i = 0; i < jsondata.length; i++) {
-									var temps = '<TR>' +
-										'<TD><A ' +
-										'href="#"' +
-										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
-						
-										'<TD>' + jsondata[i].package2 + '</TD>' +
-										'<TD>' + jsondata[i].guochongfazhi + '</TD>' +
-										'<TD>' + jsondata[i].guofangfazhi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].guochongbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].guofangbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumiangonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumianzihuifu + '</TD>' +
-										'<TD>' + jsondata[i].oychongdian + '</TD>' +
-										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
-										'<TD>' + jsondata[i].rss + '</TD>' +
-										'</TR>';
-									s = s + temps;
-						
-								}
-								s = s + '</TBODY>';
-						
-								$("#deviceTable").html(s);
-								$("#deviceTable").xlsTableFilter();
-								$("#btn123").click(function() {
-									$("#deviceTable").table2excel({
-										// 不被导出的表格行的CSS class类
-										exclude : ".noExl",
-										// 导出的Excel文档的名称
-										name : "Excel Document Name",
-										// Excel文件的名称
-										filename : "test",
-										//文件后缀名
-										fileext : ".xls",
-										//是否排除导出图片
-										exclude_img : false,
-										//是否排除导出超链接
-										exclude_links : false,
-										//是否排除导出输入框中的内容
-										exclude_inputs : false
-									});
-								});
-						
-						
-						
-								$('#deviceTable').dataTable({
-									"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
-									"bStateSave" : true, //状态保存
-									"aoColumnDefs" : [
-										//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-										{
-											"orderable" : false,
-											"aTargets" : [ 0, 2 ]
-										} // 指定列那些列参与排序，第一到第五列参与排序
-									]
-								});
-						
-								$('.table-sort tbody').on('click', 'tr', function() {
-									if ($(this).hasClass('selected')) {
-										$(this).removeClass('selected');
-									} else {
-										table.$('tr.selected').removeClass('selected');
-										$(this).addClass('selected');
-									}
-								});
-							};
-						
 						
 						
 							$(function() {
 								$.ajax({
 									type : 'Get',
-									url : 'http://localhost:8889/findAllSingleSectionts',
+									url : 'http://localhost:8889/findAllMosfets',
 									data : {},
 									success : function(jsondata) {
-									initdata(jsondata);
-									
+						
+										var data = JSON.stringify(jsondata);
+										alert(jsondata[1]);
+										//alert(data.length);
+										var s = '<THEAD>' +
+											'<TR>' +
+											'<TH rowspan="2">Part Num</TH>' +
+											'<TH rowspan="2">Package</TH>' +
+											'<TH rowspan="2">Configuration</TH>' +
+											'<TH rowspan="2">ESD<BR> Diode</TH>' +
+											'<TH rowspan="2">Vds(V)</TH>' +
+											'<TH rowspan="2">Vgs(±V)</TH>' +
+											'<TH rowspan="2">Id(A)</TH>' +
+											'<TH rowspan="2">Vgs(th)(typ V)</TH>' +
+											'<TH>10V</TH>' +
+											'<TH>4.5V</TH>' +
+											'<TH>2.5V</TH>' +
+											'<TH>1.8V</TH>' +
+											'</TR>' +
+											'<TR>' +
+											'<TH colspan="4">Rds(on)(mΩ typ) at Vgs=</TH>' +
+											'</TR>' +
+											'</THEAD>' +
+											'<TBODY>';
+										for (var i = 0; i < jsondata.length; i++) {
+											var temps = '<TR>' +
+												'<TD><A' +
+												'href="http://www.semi-one.com/upload/201803/27/201803271324599072.pdf"' +
+												'target="_blank"><I class="down"></I>' + jsondata[i].partNum + '</A></TD>' +
+						
+												'<TD>' + jsondata[i].package2 + '</TD>' +
+												'<TD>' + jsondata[i].configuration + '</TD>' +
+												'<TD>' + jsondata[i].esd + '</TD>' +
+												'<TD>' + jsondata[i].vds + '</TD>' +
+												'<TD>' + jsondata[i].vgs + '</TD>' +
+												'<TD>' + jsondata[i].id2 + '</TD>' +
+												'<TD>' + jsondata[i].vgs2 + '</TD>' +
+												'<TD>' + jsondata[i].v100 + '</TD>' +
+												'<TD>' + jsondata[i].v45 + '</TD>' +
+												'<TD>' + jsondata[i].v25 + '</TD>' +
+												'<TD>' + jsondata[i].v18 + '</TD>' +
+						
+												'</TR>';
+											s = s + temps;
+						
+										}
+										s = s + '</TBODY>';
+						
+										
+										$("#deviceTable").xlsTableFilter();
+						
+										$('#deviceTable').dataTable({
+											"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
+											"bStateSave" : true, //状态保存
+											"aoColumnDefs" : [
+												//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+												{
+													"orderable" : false,
+													"aTargets" : [ 0, 2 ]
+												} // 指定列那些列参与排序，第一到第五列参与排序
+											]
+										});
+						
+										$('.table-sort tbody').on('click', 'tr', function() {
+											if ($(this).hasClass('selected')) {
+												$(this).removeClass('selected');
+											} else {
+												table.$('tr.selected').removeClass('selected');
+												$(this).addClass('selected');
+											}
+										});
+						
 									}
 								});
 						
 							});
 						</script>
 					</DIV>
-
 					<TABLE class="dataTb" id="deviceTable" border="0" cellspacing="0"
 						cellpadding="0">
-
-
+						<tr>
+							<td  />产品型号
+							</td>
+							<td  />封装形式
+							</td>
+							<td  />过充阀
+							<br>值(v)
+							</td>
+							<td  />过放阀
+							<br>值(v)
+							</td>
+							<td  />放电过流
+							<br>阀值(v)
+							</td>
+							<td  />充电过流
+							<br>阀值(v)
+							</td>
+							<td  />过充保
+							<br>护延时
+							<br>(s)
+							</td>
+							<td  />过放保
+							<br>护延时
+							<br>(ms)
+							</td>
+							<td  />放电过
+							<br>流保护
+							<br>延时(ms)
+							</td>
+							<td  />充电过
+							<br>流保护
+							<br>延时(ms)
+							</td>
+							<td  />正常功
+							<br>耗(uA)
+							</td>
+							<td  />休眠功
+							<br>耗(uA)
+							</td>
+							<td  />休眠
+							<br>自
+							<br>恢复
+							</td>
+							<td  />OV
+							<br>充电
+							</td>
+							<td  />漏源间
+							<br>击穿电
+							<br>压（v)
+							</td>
+							<td  />RSS(ON
+							<br>)@3.9V
+							<br>(mO)
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<a href ="http: www.semi-one.com="" upload=""
+								201803="" 27="" 201803271324599072.pdf"target="_blank">
+							<i class="down"></i>BM112-LA-ST/CE</a href="http:>
+							</td>
+							<td />SOT23-6L
+							</td>
+							<td />4.275
+							</td>
+							<td />2.290
+							</td>
+							<td />0.150
+							</td>
+							<td />-0.145
+							</td>
+							<td />0.6
+							</td>
+							<td />72
+							</td>
+							<td />10
+							</td>
+							<td />10
+							</td>
+							<td />4.0
+							</td>
+							<td />0.1
+							</td>
+							<td />X
+							</td>
+							<td />V
+							</td>
+							<td />-
+							</td>
+							<td />-
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<ahref ="http: www.semi-one.com="" upload=""
+								201803="" 27="" 201803271324599072.pdf"target="_blank">
+							<i class="down"></i>BM115-XCNC-DE</ahref="http:>
+							</td>
+							<td />DFN1.6*1.9-6L
+							</td>
+							<td />4.475
+							</td>
+							<td />2.500
+							</td>
+							<td />0.025
+							</td>
+							<td />-0.025
+							</td>
+							<td />1.0
+							</td>
+							<td />32
+							</td>
+							<td />8
+							</td>
+							<td />8
+							</td>
+							<td />2.5
+							</td>
+							<td />0.8
+							</td>
+							<td />V
+							</td>
+							<td />X
+							</td>
+							<td />-
+							</td>
+							<td />-
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<ahref ="http: www.semi-one.com="" upload=""
+								201803="" 27="" 201803271324599072.pdf"target="_blank">
+							<i class="down"></i>BM115-XCAC-DE</ahref="http:>
+							</td>
+							<td />DFN1.6*1.9-6LT
+							</td>
+							<td />4.475
+							</td>
+							<td />2.500
+							</td>
+							<td />0.045
+							</td>
+							<td />-0.040
+							</td>
+							<td />1.0
+							</td>
+							<td />64
+							</td>
+							<td />16
+							</td>
+							<td />16
+							</td>
+							<td />2.5
+							</td>
+							<td />0.8
+							</td>
+							<td />V
+							</td>
+							<td />X
+							</td>
+							<td />-
+							</td>
+							<td />-
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<ahref ="http: www.semi-one.com="" upload=""
+								201803="" 27="" 201803271324599072.pdf"target="_blank">
+							<i class="down"></i>DW01A</ahref="http:>
+							</td>
+							<td />SOT23-6
+							</td>
+							<td />4.280
+							</td>
+							<td />2.400
+							</td>
+							<td />0.150
+							</td>
+							<td />-
+							</td>
+							<td />0.1
+							</td>
+							<td />40
+							</td>
+							<td />10
+							</td>
+							<td />-
+							</td>
+							<td />4.0
+							</td>
+							<td />0.1
+							</td>
+							<td />V
+							</td>
+							<td />V
+							</td>
+							<td />-
+							</td>
+							<td />-
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<ahref ="http: www.semi-one.com="" upload=""
+								201803="" 27="" 201803271324599072.pdf"target="_blank">
+							<i class="down"></i>S8261G3J</ahref="http:>
+							</td>
+							<td />SOT23-6
+							</td>
+							<td />4.280
+							</td>
+							<td />3.000
+							</td>
+							<td />0.150
+							</td>
+							<td />-
+							</td>
+							<td />1.2
+							</td>
+							<td />145
+							</td>
+							<td />9
+							</td>
+							<td />-
+							</td>
+							<td />3.5
+							</td>
+							<td />0.1
+							</td>
+							<td />V
+							</td>
+							<td />V
+							</td>
+							<td />-
+							</td>
+							<td />-
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<ahref ="http: www.semi-one.com="" upload=""
+								201803="" 27="" 201803271324599072.pdf"target="_blank">
+							<i class="down"></i>CM1002-B</ahref="http:>
+							</td>
+							<td />SOT23-6
+							</td>
+							<td />4.280 V
+							</td>
+							<td />3.00 V
+							</td>
+							<td />0.080 V
+							</td>
+							<td />-0.100 V
+							</td>
+							<td />0.1
+							</td>
+							<td />40
+							</td>
+							<td />12
+							</td>
+							<td />12
+							</td>
+							<td />2.2uA
+							</td>
+							<td />0.1
+							</td>
+							<td />X
+							</td>
+							<td />V
+							</td>
+							<td />-
+							</td>
+							<td />-
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<ahref ="http: www.semi-one.com="" upload=""
+								201803="" 27="" 201803271324599072.pdf"target="_blank">
+							<i class="down"></i>CM2112-CB</ahref="http:>
+							</td>
+							<td />SOT23-6
+							</td>
+							<td />3.750 V
+							</td>
+							<td />2.10 V
+							</td>
+							<td />0.200 V
+							</td>
+							<td />-0.150 V
+							</td>
+							<td />0.1
+							</td>
+							<td />40
+							</td>
+							<td />12
+							</td>
+							<td />12
+							</td>
+							<td />2.2uA
+							</td>
+							<td />0.1
+							</td>
+							<td />V
+							</td>
+							<td />V
+							</td>
+							<td />-
+							</td>
+							<td />-
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<ahref ="http: www.semi-one.com="" upload=""
+								201803="" 27="" 201803271324599072.pdf"target="_blank">
+							<i class="down"></i>CM1002-Q</ahref="http:>
+							</td>
+							<td />SOT23-6
+							</td>
+							<td />4.280 V
+							</td>
+							<td />2.80 V
+							</td>
+							<td />0.100 V
+							</td>
+							<td />-0.100 V
+							</td>
+							<td />0.1
+							</td>
+							<td />40
+							</td>
+							<td />12
+							</td>
+							<td />12
+							</td>
+							<td />2.2uA
+							</td>
+							<td />0.1
+							</td>
+							<td />X
+							</td>
+							<td />V
+							</td>
+							<td />-
+							</td>
+							<td />-
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<ahref ="http: www.semi-one.com="" upload=""
+								201803="" 27="" 201803271324599072.pdf"target="_blank">
+							<i class="down"></i>CM1002-W</ahref="http:>
+							</td>
+							<td />SOT23-6
+							</td>
+							<td />4.425 V
+							</td>
+							<td />2.40 V
+							</td>
+							<td />0.220 V
+							</td>
+							<td />-0.180 V
+							</td>
+							<td />0.1
+							</td>
+							<td />40
+							</td>
+							<td />12
+							</td>
+							<td />12
+							</td>
+							<td />2.2uA
+							</td>
+							<td />0.1
+							</td>
+							<td />V
+							</td>
+							<td />V
+							</td>
+							<td />-
+							</td>
+							<td />-
+							</td>
+						</tr>
 
 
 					</TABLE>

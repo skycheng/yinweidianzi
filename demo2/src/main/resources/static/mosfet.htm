@@ -20,7 +20,7 @@
 <SCRIPT src="js/jquery-ui.min.js" type="text/javascript"></SCRIPT>
 
 <SCRIPT src="js/jquery.xlstablefilter.js" type="text/javascript"></SCRIPT>
-
+<SCRIPT src="js/jquery.table2excel.js" type="text/javascript"></SCRIPT>
 <META name="GENERATOR" content="MSHTML 11.00.9600.19130">
 </HEAD>
 <BODY>
@@ -96,10 +96,7 @@
 
 				<DIV class="rightCon lr">
 					<DIV class="proTit clearfix">
-						<A class="outInfo"
-							onclick="return ExcellentExport.excel(this, 'deviceTable', 'deviceTable');"
-							href="http://www.semi-one.com/product.aspx#" download="data.xls">导出</A>
-						点击标题进行筛选
+						<A class="outInfo" id="btn123">导出</A> 点击标题进行筛选
 						<script type="text/javascript">
 						
 						
@@ -111,33 +108,33 @@
 									success : function(jsondata) {
 						
 										var data = JSON.stringify(jsondata);
-										alert(jsondata[1]);
+						
 										//alert(data.length);
-										var s = '<THEAD>'+
-							'<TR>'+
-								'<TH rowspan="2">Part Num</TH>'+
-								'<TH rowspan="2">Package</TH>'+
-								'<TH rowspan="2">Configuration</TH>'+
-								'<TH rowspan="2">ESD<BR> Diode</TH>'+
-								'<TH rowspan="2">Vds(V)</TH>'+
-								'<TH rowspan="2">Vgs(±V)</TH>'+
-								'<TH rowspan="2">Id(A)</TH>'+
-								'<TH rowspan="2">Vgs(th)(typ V)</TH>'+
-								'<TH>10V</TH>'+
-								'<TH>4.5V</TH>'+
-								'<TH>2.5V</TH>'+
-								'<TH>1.8V</TH>'+
-							'</TR>'+
-							'<TR>'+
-								'<TH colspan="4">Rds(on)(mΩ typ) at Vgs=</TH>'+
-							'</TR>'+
-						'</THEAD>'+
-						'<TBODY>';
+										var s = '<THEAD>' +
+											'<TR>' +
+											'<TH rowspan="2">Part Num</TH>' +
+											'<TH rowspan="2">Package</TH>' +
+											'<TH rowspan="2">Configuration</TH>' +
+											'<TH rowspan="2">ESD<BR> Diode</TH>' +
+											'<TH rowspan="2">Vds(V)</TH>' +
+											'<TH rowspan="2">Vgs(±V)</TH>' +
+											'<TH rowspan="2">Id(A)</TH>' +
+											'<TH rowspan="2">Vgs(th)(typ V)</TH>' +
+											'<TH>10V</TH>' +
+											'<TH>4.5V</TH>' +
+											'<TH>2.5V</TH>' +
+											'<TH>1.8V</TH>' +
+											'</TR>' +
+											'<TR>' +
+											'<TH colspan="4">Rds(on)(mΩ typ) at Vgs=</TH>' +
+											'</TR>' +
+											'</THEAD>' +
+											'<TBODY>';
 										for (var i = 0; i < jsondata.length; i++) {
 											var temps = '<TR>' +
-												'<TD><A' +
-												'href="http://www.semi-one.com/upload/201803/27/201803271324599072.pdf"' +
-												'target="_blank"><I class="down"></I>' + jsondata[i].partNum + '</A></TD>' +
+												'<TD><A ' +
+												'href="#"' +
+												' target="_blank">' + jsondata[i].partNum + '</A></TD>' +
 						
 												'<TD>' + jsondata[i].package2 + '</TD>' +
 												'<TD>' + jsondata[i].configuration + '</TD>' +
@@ -159,7 +156,24 @@
 						
 										$("#deviceTable").html(s);
 										$("#deviceTable").xlsTableFilter();
-						
+										$("#btn123").click(function() {
+											$("#deviceTable").table2excel({
+												// 不被导出的表格行的CSS class类
+												exclude : ".noExl",
+												// 导出的Excel文档的名称
+												name : "Excel Document Name",
+												// Excel文件的名称
+												filename : "test",
+												//文件后缀名
+												fileext : ".xls",
+												//是否排除导出图片
+												exclude_img : false,
+												//是否排除导出超链接
+												exclude_links : false,
+												//是否排除导出输入框中的内容
+												exclude_inputs : false
+											});
+										});
 										$('#deviceTable').dataTable({
 											"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
 											"bStateSave" : true, //状态保存
