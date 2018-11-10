@@ -49,7 +49,6 @@
 					<li><a href="default.aspx">首页</a></li>
 					<li><a href="product.aspx">产品</a></li>
 					<li><a href="case.aspx">应用</a></li>
-					<li><a href="support.aspx">技术支持</a></li>
 					<li><a href="about.aspx">关于我们</a></li>
 				</ul>
 				<div class="searchWrap lr">
@@ -73,13 +72,18 @@
 				<UL class="nav lf" id="nky">
 					<LI><A href="default.htm">首页</A></LI>
 					<LI class="active"><A href="mosfet.htm">产品</A></LI>
+					<LI><A href="star.htm">明星产品</A></LI>
 					<LI><A href="case.htm">应用</A></LI>
-					<LI><A href="support.htm">技术支持</A></LI>
 					<LI><A href="about.htm">关于我们</A></LI>
 				</UL>
 				<DIV class="searchWrap lr">
 
-					<DIV class="searchCon"></DIV>
+					<DIV class="searchCon">
+						<INPUT name="CtrlTop1$tbText" class="search" id="CtrlTop1_tbText"
+							type="text"> <INPUT name="CtrlTop1$btnFind"
+							class="searchBtn" id="CtrlTop1_btnFind" value=''
+							onclick='search()'>
+					</DIV>
 				</DIV>
 			</DIV>
 		</DIV>
@@ -98,130 +102,199 @@
 
 				<DIV class="rightCon lr">
 					<DIV class="proTit clearfix">
-						<A class="outInfo" id="btn123"
-							>导出</A>
-						点击标题进行筛选
+						<A class="outInfo" id="btn123">导出</A> 点击标题进行筛选
 						<script type="text/javascript">
-						
-						
-							$(function() {
+						$(function() {
 								$.ajax({
 									type : 'Get',
-									url : 'http://localhost:8889/findAllMultiSections',
+									url : '/findAllMultiSections',
 									data : {},
 									success : function(jsondata) {
-						
-										var data = JSON.stringify(jsondata);
-										//alert(jsondata.length);
-										//alert(data.length);
-										/**var s = '<THEAD>' +
-											'<TR>' +
-											'<TH >产品型号</TH>' +
-											'<TH >封装形式</TH>' +
-											'<TH >功耗ICC</TH>' +
-											'<TH >过充电检测电压<BR>VDET1<BR>±25mV</TH>' +
-														
-											'<TH >过充电解除电压<BR>VREL1<BR>±50mV</TH>' +
-											'<TH >过放电检测电压<BR>VDET2<BR>±80mV</TH>' +
-											'<TH >过放电解除电压<BR>VREL2<BR>±100mV</TH>' +
-											'<TH >放电过流1检测电压<BR>VOC1<BR>±15mV</TH>' +
-											'<TH >放电过流2检测电压<BR>VOC2<BR>±30mV</TH>' +
-											'<TH >短路检测电压<BR>Vshort<BR>±60mV</TH>' +
-											'<TH >充电过流检测电压<BR>VOVCC<BR>±15mV</TH>' +
-											'<TH >平衡启动电压<BR>VBAL<BR>±50mV</TH>' +
-											'<TH >放电状态<BR>检测电压<BR>Vldet</TH>' +*/
-										var s = '<THEAD>' +
-											'<TR>' +
-											'<TH >产品型号</TH>' +
-											'<TH >封装形式</TH>' +
-											'<TH >功耗ICC</TH>' +
-											'<TH >过充电<BR>检测电压</TH>' +
-						
-											'<TH >过充电<BR>解除电压</TH>' +
-											'<TH >过放电<BR>检测电压</TH>' +
-											'<TH >过放电<BR>解除电压</TH>' +
-											'<TH >放电过流1<BR>检测电压</TH>' +
-											'<TH >放电过流2<BR>检测电压</TH>' +
-											'<TH >短路检<BR>测电压</TH>' +
-											'<TH >充电过流<BR>检测电压</TH>' +
-											'<TH >平衡启<BR>动电压</TH>' +
-											'<TH >放电状态<BR>检测电压</TH>' +
-						'</TR>' +
-						
-											'</THEAD>' +
-											'<TBODY>';
-										for (var i = 0; i < jsondata.length; i++) {
-											var temps = '<TR>' +
-												'<TD><A ' +
-												'href="#"' +
-												' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
-						
-												'<TD>' + jsondata[i].package2 + '</TD>' +
-												'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-												'<TD>' + jsondata[i].jiancedianyaguochongdian + '</TD>' +
-												'<TD>' + jsondata[i].jiechudianyaguochongdian + '</TD>' +
-												'<TD>' + jsondata[i].jiancedianyaguofangdian + '</TD>' +
-												'<TD>' + jsondata[i].jiechudianyaguofangdian + '</TD>' +
-												'<TD>' + jsondata[i].jiancedianya1fangdianguoliu + '</TD>' +
-												'<TD>' + jsondata[i].jiancedianya2fangdianguoliu + '</TD>' +
-												'<TD>' + jsondata[i].jiancedianyaduanlu + '</TD>' +
-												'<TD>' + jsondata[i].jiancedianyachongdianguoliu + '</TD>' +
-												'<TD>' + jsondata[i].qidongdianyapingheng + '</TD>' +
-												'<TD>' + jsondata[i].fangdianzhuangtaijiancedianya + '</TD>' +
-						
-												'</TR>';
-											s = s + temps;
-						
-										}
-										s = s + '</TBODY>';
-						
-										$("#deviceTable").html(s);
-										
-										$("#deviceTable").xlsTableFilter();
-										$("#btn123").click(function() {
-											$("#deviceTable").table2excel({
-												// 不被导出的表格行的CSS class类
-												exclude : ".noExl",
-												// 导出的Excel文档的名称
-												name : "Excel Document Name",
-												// Excel文件的名称
-												filename : "test",
-												//文件后缀名
-												fileext : ".xls",
-												//是否排除导出图片
-												exclude_img : false,
-												//是否排除导出超链接
-												exclude_links : false,
-												//是否排除导出输入框中的内容
-												exclude_inputs : false
-											});
-										});
-						
-										$('#deviceTable').dataTable({
-											"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
-											"bStateSave" : true, //状态保存
-											"aoColumnDefs" : [
-												//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-												{
-													"orderable" : false,
-													"aTargets" : [ 0, 2 ]
-												} // 指定列那些列参与排序，第一到第五列参与排序
-											]
-										});
-						
-										$('.table-sort tbody').on('click', 'tr', function() {
-											if ($(this).hasClass('selected')) {
-												$(this).removeClass('selected');
-											} else {
-												table.$('tr.selected').removeClass('selected');
-												$(this).addClass('selected');
-											}
-										});
-						
+									initdata(jsondata);
 									}
 								});
 						
 							});
+							
+							function search() {
+								$.ajax({
+									type : 'POST',
+									url : '/findMultiSectionsByPartNumOrPackage',
+									
+									data : {p:$("#CtrlTop1_tbText").val()},
+									success : function(jsondata) {
+										initdata2(jsondata);
+						
+									}
+								});
+							}
+							;
+							function initdata(jsondata) {
+								var data = JSON.stringify(jsondata);
+								//alert(jsondata.length);
+								//alert(data.length);
+								/**var s = '<THEAD>' +
+									'<TR>' +
+									'<TH >产品型号</TH>' +
+									'<TH >封装形式</TH>' +
+									'<TH >功耗ICC</TH>' +
+									'<TH >过充电检测电压<BR>VDET1<BR>±25mV</TH>' +
+												
+									'<TH >过充电解除电压<BR>VREL1<BR>±50mV</TH>' +
+									'<TH >过放电检测电压<BR>VDET2<BR>±80mV</TH>' +
+									'<TH >过放电解除电压<BR>VREL2<BR>±100mV</TH>' +
+									'<TH >放电过流1检测电压<BR>VOC1<BR>±15mV</TH>' +
+									'<TH >放电过流2检测电压<BR>VOC2<BR>±30mV</TH>' +
+									'<TH >短路检测电压<BR>Vshort<BR>±60mV</TH>' +
+									'<TH >充电过流检测电压<BR>VOVCC<BR>±15mV</TH>' +
+									'<TH >平衡启动电压<BR>VBAL<BR>±50mV</TH>' +
+									'<TH >放电状态<BR>检测电压<BR>Vldet</TH>' +*/
+								var s = '<THEAD>' +
+									'<TR>' +
+									'<TH   >产品型号</TH>' +
+									'<TH    >封装形式</TH>' +
+									'<TH    >功耗ICC</TH>' +
+									'<TH    >过充电<BR>检测电压</TH>' +
+						
+									'<TH    >过充电<BR>解除电压</TH>' +
+									'<TH    >过放电<BR>检测电压</TH>' +
+									'<TH    >过放电<BR>解除电压</TH>' +
+									'<TH    >放电过流1<BR>检测电压</TH>' +
+									'<TH    >放电过流2<BR>检测电压</TH>' +
+									'<TH    >短路检<BR>测电压</TH>' +
+									'<TH    >充电过流<BR>检测电压</TH>' +
+									'<TH    >平衡启<BR>动电压</TH>' +
+									'<TH    >放电状态<BR>检测电压</TH>' +
+									'</TR>' +
+						
+									'</THEAD>' +
+									'<TBODY id=tbody>';
+								for (var i = 0; i < jsondata.length; i++) {
+									var temps = '<TR>' +
+										'<TD><A ' +
+										'href="#"' +
+										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
+						
+										'<TD>' + jsondata[i].package2 + '</TD>' +
+										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaguochongdian + '</TD>' +
+										'<TD>' + jsondata[i].jiechudianyaguochongdian + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaguofangdian + '</TD>' +
+										'<TD>' + jsondata[i].jiechudianyaguofangdian + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianya1fangdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianya2fangdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaduanlu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyachongdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].qidongdianyapingheng + '</TD>' +
+										'<TD>' + jsondata[i].fangdianzhuangtaijiancedianya + '</TD>' +
+						
+										'</TR>';
+									s = s + temps;
+						
+								}
+								s = s + '</TBODY>';
+						
+								$("#deviceTable").html(s);
+						
+								$("#deviceTable").xlsTableFilter();
+								$("#btn123").click(function() {
+									$("#deviceTable").table2excel({
+										// 不被导出的表格行的CSS class类
+										exclude : ".noExl",
+										// 导出的Excel文档的名称
+										name : "Excel Document Name",
+										// Excel文件的名称
+										filename : "product",
+										//文件后缀名
+										fileext : ".xls",
+										//是否排除导出图片
+										exclude_img : false,
+										//是否排除导出超链接
+										exclude_links : false,
+										//是否排除导出输入框中的内容
+										exclude_inputs : false
+									});
+								});
+						
+								$('#deviceTable').dataTable({
+									"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
+									"bStateSave" : true, //状态保存
+									"aoColumnDefs" : [
+										//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+										{
+											"orderable" : false,
+											"aTargets" : [ 0, 2 ]
+										} // 指定列那些列参与排序，第一到第五列参与排序
+									]
+								});
+						
+								$('.table-sort tbody').on('click', 'tr', function() {
+									if ($(this).hasClass('selected')) {
+										$(this).removeClass('selected');
+									} else {
+										table.$('tr.selected').removeClass('selected');
+										$(this).addClass('selected');
+									}
+								});
+						
+							}
+							;
+							function initdata2(jsondata) {
+								var data = JSON.stringify(jsondata);
+								//alert(jsondata.length);
+								//alert(data.length);
+								/**var s = '<THEAD>' +
+									'<TR>' +
+									'<TH >产品型号</TH>' +
+									'<TH >封装形式</TH>' +
+									'<TH >功耗ICC</TH>' +
+									'<TH >过充电检测电压<BR>VDET1<BR>±25mV</TH>' +
+												
+									'<TH >过充电解除电压<BR>VREL1<BR>±50mV</TH>' +
+									'<TH >过放电检测电压<BR>VDET2<BR>±80mV</TH>' +
+									'<TH >过放电解除电压<BR>VREL2<BR>±100mV</TH>' +
+									'<TH >放电过流1检测电压<BR>VOC1<BR>±15mV</TH>' +
+									'<TH >放电过流2检测电压<BR>VOC2<BR>±30mV</TH>' +
+									'<TH >短路检测电压<BR>Vshort<BR>±60mV</TH>' +
+									'<TH >充电过流检测电压<BR>VOVCC<BR>±15mV</TH>' +
+									'<TH >平衡启动电压<BR>VBAL<BR>±50mV</TH>' +
+									'<TH >放电状态<BR>检测电压<BR>Vldet</TH>' +*/
+								var s = '';
+								for (var i = 0; i < jsondata.length; i++) {
+									var temps = '<TR>' +
+										'<TD><A ' +
+										'href="#"' +
+										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
+						
+										'<TD>' + jsondata[i].package2 + '</TD>' +
+										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaguochongdian + '</TD>' +
+										'<TD>' + jsondata[i].jiechudianyaguochongdian + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaguofangdian + '</TD>' +
+										'<TD>' + jsondata[i].jiechudianyaguofangdian + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianya1fangdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianya2fangdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaduanlu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyachongdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].qidongdianyapingheng + '</TD>' +
+										'<TD>' + jsondata[i].fangdianzhuangtaijiancedianya + '</TD>' +
+						
+										'</TR>';
+									s = s + temps;
+						
+								}
+						
+								$("#tbody").empty();
+								$("#tbody").append(s);
+						
+						
+						
+						
+								}
+							;
+						
+						
+							
 						</script>
 					</DIV>
 					<TABLE class="dataTb" id="deviceTable" border="0" cellspacing="0"
@@ -235,9 +308,11 @@
 		<!--底部信息开始-->
 		<DIV class="footer">
 			<DIV class="footLink">
-				<A href="default.htm">首页</A>| <A href="single_section.htm">产品</A>| <A
-					href="case.htm">应用</A>| <A href="support.htm">技术支持</A>| <A
-					href="about.htm">关于我们</A>|
+				<A href="default.htm">首页</A>| 
+				<A href="single_section.htm">产品</A>| 
+				<A href="star.htm">明星产品</A>|
+				<A href="case.htm">应用</A>|  
+				<A href="about.htm">关于我们</A>|
 			</DIV>
 			<DIV class="copyright">Copyright©2018 深圳市银鹏威电子有限公司</DIV>
 		</DIV>
