@@ -93,11 +93,11 @@
 				<UL class="leftMenu lf">
 					<LI class="menuName">产品分类</LI>
 
-					<LI class="active"><A href="single_section.htm">单节锂电保护 IC</A></LI>
+					<LI><A href="single_section.htm">单节锂电保护 IC</A></LI>
 					<LI><A href="multi_section.htm">多节锂电保护 IC</A></LI>
 					<LI><A href="mosfet.htm">MOSFET</A></LI>
 					<LI><A href="together.htm">二合一IC</A></LI>
-					<LI><A href="secondary.htm">次级保护IC</A></LI>
+					<LI class="active"><A href="secondary.htm">次级保护IC</A></LI>
 				</UL>
 				<!--右侧内容-->
 
@@ -108,7 +108,7 @@
 							$(function() {
 								$.ajax({
 									type : 'Get',
-									url : '/findAllSingleSectionts',
+									url : '/findAllCijis',
 									data : {},
 									success : function(jsondata) {
 										initdata(jsondata);
@@ -120,7 +120,7 @@
 							function search() {
 								$.ajax({
 									type : 'POST',
-									url : '/findSingleSectionsByPartNumOrPackage',
+									url : '/findCijisByPartNumOrPackage',
 						
 									data : {
 										p : $("#CtrlTop1_tbText").val()
@@ -139,22 +139,13 @@
 								var s = '<THEAD>' +
 									'<TR>' +
 									'<TH  >产品型号</TH>' +
-									'<TH   >封装形式</TH>' +
-									'<TH   >过充阀<BR>值(v)</TH>' +
-									'<TH   >过放阀<BR>值(v)</TH>' +
+									'<TH   >正常功耗<BR>IDD</TH>' +
+									'<TH   >过充电检测<BR>电压VOVP<BR>±25mV</TH>' +
+									'<TH   >过充电迟滞<BR>电压VHYS<BR>±50mV</TH>' +
 						
-									'<TH   >放电过流<BR>阀值(v)</TH>' +
-									'<TH   >充电过流<BR>阀值(v)</TH>' +
-									'<TH   >过充保<BR>护延时<BR>(s)</TH>' +
-									'<TH   >过放保<BR>护延时<BR>(ms)</TH>' +
-									'<TH   >放电过<BR>流保护<BR>延时(ms)</TH>' +
-									'<TH   >充电过<BR>流保护<BR>延时(ms)</TH>' +
-									'<TH   >正常功<BR>耗(uA)</TH>' +
-									'<TH   >休眠功<BR>耗(uA)</TH>' +
-									'<TH   >休眠<BR>自<BR>恢复</TH>' +
-									'<TH   >OV<BR>充电</TH>' +
-									'<TH   >漏源间<BR>击穿电<BR>压（v)</TH>' +
-									'<TH   >RSS(ON<BR>)@3.9V<BR>(mO)</TH>' +
+									'<TH   >过充电保护<BR>延时TOVP<BR>±30%</TH>' +
+									'<TH   >CO输出方式</TH>' +
+									
 						
 									'</TR>' +
 						
@@ -164,23 +155,14 @@
 									var temps = '<TR>' +
 										'<TD><A ' +
 										'href="#"' +
-										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
+										' target="_blank">' + jsondata[i].xinghao + '</A></TD>' +
 						
-										'<TD>' + jsondata[i].package2 + '</TD>' +
-										'<TD>' + jsondata[i].guochongfazhi + '</TD>' +
-										'<TD>' + jsondata[i].guofangfazhi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].guochongbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].guofangbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliubaohuyanchi + '</TD>' +
 										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumiangonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumianzihuifu + '</TD>' +
-										'<TD>' + jsondata[i].oychongdian + '</TD>' +
-										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
-										'<TD>' + jsondata[i].rss + '</TD>' +
+										'<TD>' + jsondata[i].guochongdianjiancedianya + '</TD>' +
+										'<TD>' + jsondata[i].guochongdianchizhidianya + '</TD>' +
+										'<TD>' + jsondata[i].guochongdianbaohuyanchi + '</TD>' +
+										'<TD>' + jsondata[i].coshuchufangshi + '</TD>' +
+										
 										'</TR>';
 									s = s + temps;
 						
@@ -230,23 +212,14 @@
 									var temps = '<TR>' +
 										'<TD><A ' +
 										'href="#"' +
-										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
+										' target="_blank">' + jsondata[i].xinghao + '</A></TD>' +
 						
-										'<TD>' + jsondata[i].package2 + '</TD>' +
-										'<TD>' + jsondata[i].guochongfazhi + '</TD>' +
-										'<TD>' + jsondata[i].guofangfazhi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].guochongbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].guofangbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliubaohuyanchi + '</TD>' +
 										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumiangonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumianzihuifu + '</TD>' +
-										'<TD>' + jsondata[i].oychongdian + '</TD>' +
-										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
-										'<TD>' + jsondata[i].rss + '</TD>' +
+										'<TD>' + jsondata[i].guochongdianjiancedianya + '</TD>' +
+										'<TD>' + jsondata[i].guochongdianchizhidianya + '</TD>' +
+										'<TD>' + jsondata[i].guochongdianbaohuyanchi + '</TD>' +
+										'<TD>' + jsondata[i].coshuchufangshi + '</TD>' +
+										
 										'</TR>';
 									s = s + temps;
 						

@@ -93,10 +93,10 @@
 				<UL class="leftMenu lf">
 					<LI class="menuName">产品分类</LI>
 
-					<LI class="active"><A href="single_section.htm">单节锂电保护 IC</A></LI>
+					<LI><A href="single_section.htm">单节锂电保护 IC</A></LI>
 					<LI><A href="multi_section.htm">多节锂电保护 IC</A></LI>
 					<LI><A href="mosfet.htm">MOSFET</A></LI>
-					<LI><A href="together.htm">二合一IC</A></LI>
+					<LI class="active"><A href="together.htm">二合一IC</A></LI>
 					<LI><A href="secondary.htm">次级保护IC</A></LI>
 				</UL>
 				<!--右侧内容-->
@@ -108,7 +108,7 @@
 							$(function() {
 								$.ajax({
 									type : 'Get',
-									url : '/findAllSingleSectionts',
+									url : '/findAllErheyis',
 									data : {},
 									success : function(jsondata) {
 										initdata(jsondata);
@@ -120,7 +120,7 @@
 							function search() {
 								$.ajax({
 									type : 'POST',
-									url : '/findSingleSectionsByPartNumOrPackage',
+									url : '/findErheyisByPartNumOrPackage',
 						
 									data : {
 										p : $("#CtrlTop1_tbText").val()
@@ -140,6 +140,7 @@
 									'<TR>' +
 									'<TH  >产品型号</TH>' +
 									'<TH   >封装形式</TH>' +
+									'<TH   >品牌</TH>' +
 									'<TH   >过充阀<BR>值(v)</TH>' +
 									'<TH   >过放阀<BR>值(v)</TH>' +
 						
@@ -164,23 +165,24 @@
 									var temps = '<TR>' +
 										'<TD><A ' +
 										'href="#"' +
-										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
+										' target="_blank">' + jsondata[i].a + '</A></TD>' +
 						
-										'<TD>' + jsondata[i].package2 + '</TD>' +
-										'<TD>' + jsondata[i].guochongfazhi + '</TD>' +
-										'<TD>' + jsondata[i].guofangfazhi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].guochongbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].guofangbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumiangonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumianzihuifu + '</TD>' +
-										'<TD>' + jsondata[i].oychongdian + '</TD>' +
-										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
-										'<TD>' + jsondata[i].rss + '</TD>' +
+										'<TD>' + jsondata[i].b + '</TD>' +
+										'<TD>' + jsondata[i].c + '</TD>' +
+										'<TD>' + jsondata[i].d + '</TD>' +
+										'<TD>' + jsondata[i].e + '</TD>' +
+										'<TD>' + jsondata[i].f + '</TD>' +
+										'<TD>' + jsondata[i].g + '</TD>' +
+										'<TD>' + jsondata[i].h + '</TD>' +
+										'<TD>' + jsondata[i].i + '</TD>' +
+										'<TD>' + jsondata[i].j + '</TD>' +
+										'<TD>' + jsondata[i].k + '</TD>' +
+										'<TD>' + jsondata[i].l + '</TD>' +
+										'<TD>' + jsondata[i].m + '</TD>' +
+										'<TD>' + jsondata[i].n + '</TD>' +
+										'<TD>' + jsondata[i].o + '</TD>' +
+										'<TD>' + jsondata[i].p + '</TD>' +
+										'<TD>' + jsondata[i].q + '</TD>' +
 										'</TR>';
 									s = s + temps;
 						
@@ -230,23 +232,24 @@
 									var temps = '<TR>' +
 										'<TD><A ' +
 										'href="#"' +
-										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
+										' target="_blank">' + jsondata[i].a + '</A></TD>' +
 						
-										'<TD>' + jsondata[i].package2 + '</TD>' +
-										'<TD>' + jsondata[i].guochongfazhi + '</TD>' +
-										'<TD>' + jsondata[i].guofangfazhi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].guochongbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].guofangbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumiangonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumianzihuifu + '</TD>' +
-										'<TD>' + jsondata[i].oychongdian + '</TD>' +
-										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
-										'<TD>' + jsondata[i].rss + '</TD>' +
+										'<TD>' + jsondata[i].b + '</TD>' +
+										'<TD>' + jsondata[i].c + '</TD>' +
+										'<TD>' + jsondata[i].d + '</TD>' +
+										'<TD>' + jsondata[i].e + '</TD>' +
+										'<TD>' + jsondata[i].f + '</TD>' +
+										'<TD>' + jsondata[i].g + '</TD>' +
+										'<TD>' + jsondata[i].h + '</TD>' +
+										'<TD>' + jsondata[i].i + '</TD>' +
+										'<TD>' + jsondata[i].j + '</TD>' +
+										'<TD>' + jsondata[i].k + '</TD>' +
+										'<TD>' + jsondata[i].l + '</TD>' +
+										'<TD>' + jsondata[i].m + '</TD>' +
+										'<TD>' + jsondata[i].n + '</TD>' +
+										'<TD>' + jsondata[i].o + '</TD>' +
+										'<TD>' + jsondata[i].p + '</TD>' +
+										'<TD>' + jsondata[i].q + '</TD>' +
 										'</TR>';
 									s = s + temps;
 						
@@ -275,11 +278,9 @@
 		<!--底部信息开始-->
 		<DIV class="footer">
 			<DIV class="footLink">
-				<A href="default.htm">首页</A>| 
-				<A href="single_section.htm">产品</A>| 
-				<A href="star.htm">明星产品</A>|
-				<A href="case.htm">应用</A>|  
-				<A href="about.htm">关于我们</A>|
+				<A href="default.htm">首页</A>| <A href="single_section.htm">产品</A>| <A
+					href="star.htm">明星产品</A>| <A href="case.htm">应用</A>| <A
+					href="about.htm">关于我们</A>|
 			</DIV>
 			<DIV class="copyright">Copyright©2018 深圳市银鹏威电子有限公司</DIV>
 		</DIV>
