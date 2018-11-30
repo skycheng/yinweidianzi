@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<HEAD>
+<META content="IE=11.0000" http-equiv="X-UA-Compatible">
+
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>产品分类-深圳市银鹏威电子有限公司_MOS</TITLE>
+<META name="Description"
+	content="深圳市银鹏威电子有限公司_联系人:何伟才_联系电话：86 0755 83995367 手机：13926506176  深圳市银鹏威电子有限公司，成立于2008年，注册资本200万,座落于深圳坂田天安云谷产业园。银鹏威是一家集研发，生产和销售为一体的半导体高新技术企业。产品涵盖手机，智能穿戴，数码电池，电动工具，电动自行车，UPS,TV等领域。主营产品有保护IC，MOSFET,MCU，IGBT，TVS管等。公司除拥有自主品牌外，还代理台湾华昕，BYD,德普微等品牌产品。我司有雄厚的研发能力，研发及应用团队20人，其中有高级工程师三人，本科以上学历17人，研发工程师12人，应用工程师3人，FAE2人，一条龙地解决客户售前，售中，售后的问题。公司始终秉承品质至上，合作共赢的服务宗旨，在市场上赢得了一致好评。">
+<META name="keywords" content="银鹏威,深圳市银鹏威电子有限公司,MOS">
+<LINK href="css/reset.css" rel="stylesheet" type="text/css">
+<LINK href="css/main.css" rel="stylesheet" type="text/css">
+<LINK href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<LINK href="css/xlstablefilter.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/style.css">
+<SCRIPT src="js/excellentexport.min.js" type="text/javascript"></SCRIPT>
+
+<SCRIPT src="js/jquery-1.11.0.js" type="text/javascript"></SCRIPT>
+
+<SCRIPT src="js/jquery-ui.min.js" type="text/javascript"></SCRIPT>
+
+<SCRIPT src="js/jquery.xlstablefilter.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="js/jquery.table2excel.js" type="text/javascript"></SCRIPT>
+
+<META name="GENERATOR" content="MSHTML 11.00.9600.19130">
+</HEAD>
+<BODY>
+
+	<div id="left">
+		<A title="银鹏威" href="default.htm"> <img src="img/logo2.jpg"></A>
+	</div>
+	<div id="content">
+		<div class="dropdownmenu">
+
+
+
+			<UL>
+				<LI><A href="default.htm">首页</A></LI>
+				<LI class="active"><A href="single_section.htm">产品</A>
+					<ul id="submenu">
+
+
+						<LI><A href="single_section.htm">单节锂电保护 IC</A></LI>
+						<LI><A href="multi_section.htm">多节锂电保护 IC</A></LI>
+						<LI><A href="mosfet.htm">MOSFET</A></LI>
+						<LI><A href="together.htm">二合一IC</A></LI>
+						<LI><A href="secondary.htm">次级保护IC</A></LI>
+					</ul></LI>
+				<LI><A href="star.htm">明星产品</A></LI>
+				<LI><A href="case.htm">应用</A></LI>
+				<LI><A href="about.htm">关于我们</A>
+					<ul id="submenu">
+
+
+						<LI><A href="about.htm">公司简介</A></LI>
+
+						<LI><A href="contact_us.htm">联系我们</A></LI>
+					</ul></LI>
+			</UL>
+		</div>
+	</div>
+
+
+
+
+
+
+	<DIV class="main">
+		<DIV>
+
+			<!--右侧内容-->
+
+			<DIV>
+				<DIV>
+
+					<A class="outInfo" id="btn123">下载表格</A> 点击下面表格的表头进行筛选
+
+
+				</DIV>
+
+
+				<div class="form-group">
+					<div class="col-sm-2 control-label">
+						<a href="/toSecondaryAddEdit?id=-1" th:href="@{/toSecondaryAddEdit}"
+							class="btn btn-info">添加</a>
+					</div>
+				</div>
+
+				<TABLE class="dataTb" id="deviceTable" border="0" cellspacing="0"
+					cellpadding="0">
+
+
+
+
+				</TABLE>
+			</DIV>
+		</DIV>
+	</DIV>
+
+	<script type="text/javascript">
+		$(function() {
+			$.ajax({
+				type : 'Get',
+				url : '/findAllCijis',
+				data : {},
+				success : function(jsondata) {
+					initdata(jsondata);
+
+				}
+			});
+
+		});
+		function search() {
+			$.ajax({
+				type : 'POST',
+				url : '/findCijisByPartNumOrPackage',
+
+				data : {
+					p : $("#CtrlTop1_tbText").val()
+				},
+				success : function(jsondata) {
+					initdata2(jsondata);
+
+				}
+			});
+		};
+		function initdata(jsondata) {
+			var data = JSON.stringify(jsondata);
+			//alert(jsondata.length);
+			//alert(data.length);
+			var s = '<THEAD>' + '<TR>' + '<TH  >产品型号</TH>'
+					+ '<TH   >正常功耗<BR>IDD</TH>'
+					+ '<TH   >过充电检测<BR>电压VOVP<BR>±25mV</TH>'
+					+ '<TH   >过充电迟滞<BR>电压VHYS<BR>±50mV</TH>' 
+
+					+'<TH   >过充电保护<BR>延时TOVP<BR>±30%</TH>'
+					+ '<TH   >CO输出方式</TH>' 
+					+ '<TH   >操作</TH>' +
+					'</TR>' +
+
+					'</THEAD>' + '<TBODY id="tbody">';
+			for (var i = 0; i < jsondata.length; i++) {
+				var temps = '<TR>'
+						+ '<TD><A ' +
+									'href="#"' +
+									' target="_blank">'
+						+ jsondata[i].xinghao + '</A></TD>' +
+
+						'<TD>' + jsondata[i].zhengchanggonghao + '</TD>'
+						+ '<TD>' + jsondata[i].guochongdianjiancedianya
+						+ '</TD>' + '<TD>'
+						+ jsondata[i].guochongdianchizhidianya + '</TD>'
+						+ '<TD>' + jsondata[i].guochongdianbaohuyanchi
+						+ '</TD>' + '<TD>' + jsondata[i].coshuchufangshi
+						+ '</TD>' +
+						'<TD><A href="/toDelete?id='+jsondata[i].id+'" >删除</A><A href="/toSecondaryAddEdit?id='+jsondata[i].id+'" >编辑</A></TD>' +
+						'</TR>';
+				s = s + temps;
+
+			}
+			s = s + '</TBODY>';
+
+			$("#deviceTable").html(s);
+			$("#deviceTable").xlsTableFilter();
+			$("#btn123").click(function() {
+				$("#deviceTable").table2excel({
+					// 不被导出的表格行的CSS class类
+					exclude : ".noExl",
+					// 导出的Excel文档的名称
+					name : "Excel Document Name",
+					// Excel文件的名称
+					filename : "product",
+					//文件后缀名
+					fileext : ".xls",
+					//是否排除导出图片
+					exclude_img : false,
+					//是否排除导出超链接
+					exclude_links : false,
+					//是否排除导出输入框中的内容
+					exclude_inputs : false
+				});
+			});
+
+			$('.table-sort tbody').on('click', 'tr', function() {
+				if ($(this).hasClass('selected')) {
+					$(this).removeClass('selected');
+				} else {
+					table.$('tr.selected').removeClass('selected');
+					$(this).addClass('selected');
+				}
+			});
+		};
+		function initdata2(jsondata) {
+			var data = JSON.stringify(jsondata);
+			//alert(jsondata.length);
+			//alert(data.length);
+			var s = '';
+			for (var i = 0; i < jsondata.length; i++) {
+				var temps = '<TR>'
+						+ '<TD><A ' +
+									'href="#"' +
+									' target="_blank">'
+						+ jsondata[i].xinghao + '</A></TD>' +
+
+						'<TD>' + jsondata[i].zhengchanggonghao + '</TD>'
+						+ '<TD>' + jsondata[i].guochongdianjiancedianya
+						+ '</TD>' + '<TD>'
+						+ jsondata[i].guochongdianchizhidianya + '</TD>'
+						+ '<TD>' + jsondata[i].guochongdianbaohuyanchi
+						+ '</TD>' + '<TD>' + jsondata[i].coshuchufangshi
+						+ '</TD>' +
+
+						'</TR>';
+				s = s + temps;
+
+			}
+			$("#tbody").empty();
+
+			$("#tbody").append(s);
+
+		};
+	</script>
+</BODY>
+</HTML>
