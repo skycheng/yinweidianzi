@@ -39,6 +39,7 @@ public class CijiController {
 		} else {
 			ciji = new Ciji();
 		}
+		
 
 		model.addAttribute("ciji", ciji);
 		return "toSecondaryAddEdit";
