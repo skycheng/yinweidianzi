@@ -30,31 +30,7 @@ public class CijiController {
 		return repository.findByPartNumOrPackage(p);
 
 	}
-
-	@RequestMapping("/toSecondaryAddEdit")
-	public String toEdit(Model model, int id) {
-		Ciji ciji = null;
-		if (id > 0) {
-			ciji = repository.getOne(id);
-		} else {
-			ciji = new Ciji();
-		}
-		
-
-		model.addAttribute("ciji", ciji);
-		return "toSecondaryAddEdit";
-	}
-
-	@RequestMapping("/secondaryAddEdit")
-	public String secondaryAddEdit(Ciji ciji) {
-		repository.save(ciji);
-		return "redirect:/secondaryAdmin";
-	}
-
-	@RequestMapping("/toDelete")
-	public String delete(int id) {
-		repository.deleteById(id);
-		return "redirect:/secondaryAdmin";
-	}
+	
+	
 
 }

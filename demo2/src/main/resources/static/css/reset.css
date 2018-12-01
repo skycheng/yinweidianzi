@@ -91,7 +91,7 @@ a:focus {
 .clearfix {
 	-ms-zoom: 1;
 }
-.contents{line-height:31px; padding:3px 0px 5px 0px;font-family: 'Microsoft YaHei';}
+.contents{line-height:31px; padding:3px 0px 5px 0px;font-family: 'Microsoft YaHei';border: 1px currentColor;}
 .flash img{ width: 100%}
 .flash ul.bxslider{list-style:none;}
 .flash div.bx-pager{bottom: 4%;}
