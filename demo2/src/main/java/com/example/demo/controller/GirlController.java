@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,9 +19,7 @@ public class GirlController {
 	
 	@GetMapping(value = "/girls")
 	public List<Girl> girlList(){
-		Girl girl = new Girl();
-		girl.setAge(5);
-		Example<Girl> example = Example.of(girl);
+		
 		
 		return girlRepository.findAll();
 		

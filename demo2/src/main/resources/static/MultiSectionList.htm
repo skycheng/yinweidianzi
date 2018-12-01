@@ -1,5 +1,5 @@
-﻿
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
+
 
 <HTML>
 <HEAD>
@@ -102,23 +102,21 @@
 						$(function() {
 								$.ajax({
 									type : 'Get',
-									url : '/findAllSingleSectionts',
+									url : '/findAllMultiSections',
 									data : {},
 									success : function(jsondata) {
-										initdata(jsondata);
-						
+									initdata(jsondata);
 									}
 								});
 						
 							});
+							
 							function search() {
 								$.ajax({
 									type : 'POST',
-									url : '/findSingleSectionsByPartNumOrPackage',
-						
-									data : {
-										p : $("#CtrlTop1_tbText").val()
-									},
+									url : '/findMultiSectionsByPartNumOrPackage',
+									
+									data : {p:$("#CtrlTop1_tbText").val()},
 									success : function(jsondata) {
 										initdata2(jsondata);
 						
@@ -130,30 +128,43 @@
 								var data = JSON.stringify(jsondata);
 								//alert(jsondata.length);
 								//alert(data.length);
+								/**var s = '<THEAD>' +
+									'<TR>' +
+									'<TH >产品型号</TH>' +
+									'<TH >封装形式</TH>' +
+									'<TH >功耗ICC</TH>' +
+									'<TH >过充电检测电压<BR>VDET1<BR>±25mV</TH>' +
+												
+									'<TH >过充电解除电压<BR>VREL1<BR>±50mV</TH>' +
+									'<TH >过放电检测电压<BR>VDET2<BR>±80mV</TH>' +
+									'<TH >过放电解除电压<BR>VREL2<BR>±100mV</TH>' +
+									'<TH >放电过流1检测电压<BR>VOC1<BR>±15mV</TH>' +
+									'<TH >放电过流2检测电压<BR>VOC2<BR>±30mV</TH>' +
+									'<TH >短路检测电压<BR>Vshort<BR>±60mV</TH>' +
+									'<TH >充电过流检测电压<BR>VOVCC<BR>±15mV</TH>' +
+									'<TH >平衡启动电压<BR>VBAL<BR>±50mV</TH>' +
+									'<TH >放电状态<BR>检测电压<BR>Vldet</TH>' +*/
 								var s = '<THEAD>' +
 									'<TR>' +
-									'<TH  >产品型号</TH>' +
-									'<TH   >封装形式</TH>' +
-									'<TH   >过充阀<BR>值(v)</TH>' +
-									'<TH   >过放阀<BR>值(v)</TH>' +
+									'<TH   >产品型号</TH>' +
+									'<TH    >封装形式</TH>' +
+									'<TH    >功耗ICC</TH>' +
+									'<TH    >过充电<BR>检测电压</TH>' +
 						
-									'<TH   >放电过流<BR>阀值(v)</TH>' +
-									'<TH   >充电过流<BR>阀值(v)</TH>' +
-									'<TH   >过充保<BR>护延时<BR>(s)</TH>' +
-									'<TH   >过放保<BR>护延时<BR>(ms)</TH>' +
-									'<TH   >放电过<BR>流保护<BR>延时(ms)</TH>' +
-									'<TH   >充电过<BR>流保护<BR>延时(ms)</TH>' +
-									'<TH   >正常功<BR>耗(uA)</TH>' +
-									'<TH   >休眠功<BR>耗(uA)</TH>' +
-									'<TH   >休眠<BR>自<BR>恢复</TH>' +
-									'<TH   >OV<BR>充电</TH>' +
-									'<TH   >漏源间<BR>击穿电<BR>压（v)</TH>' +
-									'<TH   >RSS(ON<BR>)@3.9V<BR>(mO)</TH>' +
-						
+									'<TH    >过充电<BR>解除电压</TH>' +
+									'<TH    >过放电<BR>检测电压</TH>' +
+									'<TH    >过放电<BR>解除电压</TH>' +
+									'<TH    >放电过流1<BR>检测电压</TH>' +
+									'<TH    >放电过流2<BR>检测电压</TH>' +
+									'<TH    >短路检<BR>测电压</TH>' +
+									'<TH    >充电过流<BR>检测电压</TH>' +
+									'<TH    >平衡启<BR>动电压</TH>' +
+									'<TH    >放电状态<BR>检测电压</TH>' +
+									'<TH   >操作</TH>' +
 									'</TR>' +
 						
 									'</THEAD>' +
-									'<TBODY id="tbody">';
+									'<TBODY id=tbody>';
 								for (var i = 0; i < jsondata.length; i++) {
 									var temps = '<TR>' +
 										'<TD><A ' +
@@ -161,27 +172,27 @@
 										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
 						
 										'<TD>' + jsondata[i].package2 + '</TD>' +
-										'<TD>' + jsondata[i].guochongfazhi + '</TD>' +
-										'<TD>' + jsondata[i].guofangfazhi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].guochongbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].guofangbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliubaohuyanchi + '</TD>' +
 										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumiangonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumianzihuifu + '</TD>' +
-										'<TD>' + jsondata[i].oychongdian + '</TD>' +
-										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
-										'<TD>' + jsondata[i].rss + '</TD>' +
-										'</TR>';
+										'<TD>' + jsondata[i].jiancedianyaguochongdian + '</TD>' +
+										'<TD>' + jsondata[i].jiechudianyaguochongdian + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaguofangdian + '</TD>' +
+										'<TD>' + jsondata[i].jiechudianyaguofangdian + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianya1fangdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianya2fangdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaduanlu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyachongdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].qidongdianyapingheng + '</TD>' +
+										'<TD>' + jsondata[i].fangdianzhuangtaijiancedianya + '</TD>' +
+						
+										'<TD><A href="/toMultiSectionDelete?id='+jsondata[i].id+'" >删除</A><A href="/toMultiSectionAddEdit?id='+jsondata[i].id+'" >编辑</A></TD>' +
+						'</TR>';
 									s = s + temps;
 						
 								}
 								s = s + '</TBODY>';
 						
 								$("#deviceTable").html(s);
+						
 								$("#deviceTable").xlsTableFilter();
 								$("#btn123").click(function() {
 									$("#deviceTable").table2excel({
@@ -202,8 +213,17 @@
 									});
 								});
 						
-						
-						
+								$('#deviceTable').dataTable({
+									"aaSorting" : [ [ 2, "asc" ] ], //默认第几列排序
+									"bStateSave" : true, //状态保存
+									"aoColumnDefs" : [
+										//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+										{
+											"orderable" : false,
+											"aTargets" : [ 0, 2 ]
+										} // 指定列那些列参与排序，第一到第五列参与排序
+									]
+								});
 						
 								$('.table-sort tbody').on('click', 'tr', function() {
 									if ($(this).hasClass('selected')) {
@@ -213,45 +233,64 @@
 										$(this).addClass('selected');
 									}
 								});
+						
 							}
 							;
 							function initdata2(jsondata) {
 								var data = JSON.stringify(jsondata);
 								//alert(jsondata.length);
 								//alert(data.length);
+								/**var s = '<THEAD>' +
+									'<TR>' +
+									'<TH >产品型号</TH>' +
+									'<TH >封装形式</TH>' +
+									'<TH >功耗ICC</TH>' +
+									'<TH >过充电检测电压<BR>VDET1<BR>±25mV</TH>' +
+												
+									'<TH >过充电解除电压<BR>VREL1<BR>±50mV</TH>' +
+									'<TH >过放电检测电压<BR>VDET2<BR>±80mV</TH>' +
+									'<TH >过放电解除电压<BR>VREL2<BR>±100mV</TH>' +
+									'<TH >放电过流1检测电压<BR>VOC1<BR>±15mV</TH>' +
+									'<TH >放电过流2检测电压<BR>VOC2<BR>±30mV</TH>' +
+									'<TH >短路检测电压<BR>Vshort<BR>±60mV</TH>' +
+									'<TH >充电过流检测电压<BR>VOVCC<BR>±15mV</TH>' +
+									'<TH >平衡启动电压<BR>VBAL<BR>±50mV</TH>' +
+									'<TH >放电状态<BR>检测电压<BR>Vldet</TH>' +*/
 								var s = '';
 								for (var i = 0; i < jsondata.length; i++) {
 									var temps = '<TR>' +
 										'<TD><A ' +
-										'href="#"' +
+										'href="'+jsondata[i].pdf+'"' +
 										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
 						
 										'<TD>' + jsondata[i].package2 + '</TD>' +
-										'<TD>' + jsondata[i].guochongfazhi + '</TD>' +
-										'<TD>' + jsondata[i].guofangfazhi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].guochongbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].guofangbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliubaohuyanchi + '</TD>' +
 										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumiangonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumianzihuifu + '</TD>' +
-										'<TD>' + jsondata[i].oychongdian + '</TD>' +
-										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
-										'<TD>' + jsondata[i].rss + '</TD>' +
-										'</TR>';
+										'<TD>' + jsondata[i].jiancedianyaguochongdian + '</TD>' +
+										'<TD>' + jsondata[i].jiechudianyaguochongdian + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaguofangdian + '</TD>' +
+										'<TD>' + jsondata[i].jiechudianyaguofangdian + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianya1fangdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianya2fangdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyaduanlu + '</TD>' +
+										'<TD>' + jsondata[i].jiancedianyachongdianguoliu + '</TD>' +
+										'<TD>' + jsondata[i].qidongdianyapingheng + '</TD>' +
+										'<TD>' + jsondata[i].fangdianzhuangtaijiancedianya + '</TD>' +
+						
+										'<TD><A href="/toMultiSectionDelete?id='+jsondata[i].id+'" >删除</A><A href="/toMultiSectionAddEdit?id='+jsondata[i].id+'" >编辑</A></TD>' +
+						'</TR>';
 									s = s + temps;
 						
 								}
-								$("#tbody").empty();
 						
+								$("#tbody").empty();
 								$("#tbody").append(s);
 						
 						
-							}
+						
+						
+								}
 							;
 					</script>
 </BODY>
 </HTML>
+

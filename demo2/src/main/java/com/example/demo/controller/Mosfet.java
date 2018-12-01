@@ -21,6 +21,15 @@ public class Mosfet {
 	private String v45;
 	private String v25;
 	private String v18;
+	private String pdf;
+
+	public String getPdf() {
+		return pdf;
+	}
+
+	public void setPdf(String pdf) {
+		this.pdf = pdf;
+	}
 
 	public Mosfet() {
 

@@ -25,6 +25,15 @@ public class SingleSection {
 	private String oychongdian;
 	private String louyuanjianjichuandianya;
 	private String rss;
+	private String pdf;
+
+	public String getPdf() {
+		return pdf;
+	}
+
+	public void setPdf(String pdf) {
+		this.pdf = pdf;
+	}
 
 	public Integer getId() {
 		return id;

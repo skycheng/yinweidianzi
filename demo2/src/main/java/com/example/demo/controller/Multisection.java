@@ -23,6 +23,15 @@ public class Multisection {
 	private String jiancedianyachongdianguoliu;
 	private String qidongdianyapingheng;
 	private String fangdianzhuangtaijiancedianya;
+	private String pdf;
+
+	public String getPdf() {
+		return pdf;
+	}
+
+	public void setPdf(String pdf) {
+		this.pdf = pdf;
+	}
 
 	public String getFangdianzhuangtaijiancedianya() {
 		return fangdianzhuangtaijiancedianya;

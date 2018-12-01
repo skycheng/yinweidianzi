@@ -26,6 +26,15 @@ public class Erheyi {
 	private String o;
 	private String p;
 	private String q;
+	private String pdf;
+
+	public String getPdf() {
+		return pdf;
+	}
+
+	public void setPdf(String pdf) {
+		this.pdf = pdf;
+	}
 
 	public Erheyi() {
 

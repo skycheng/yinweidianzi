@@ -137,7 +137,7 @@
 			for (var i = 0; i < jsondata.length; i++) {
 				var temps = '<TR>'
 						+ '<TD><A ' +
-									'href="#"' +
+									'href="'+jsondata[i].pdf+'"' +
 									' target="_blank">'
 						+ jsondata[i].xinghao + '</A></TD>' +
 
@@ -193,7 +193,7 @@
 			for (var i = 0; i < jsondata.length; i++) {
 				var temps = '<TR>'
 						+ '<TD><A ' +
-									'href="#"' +
+									'href="'+jsondata[i].pdf+'"' +
 									' target="_blank">'
 						+ jsondata[i].xinghao + '</A></TD>' +
 
@@ -204,7 +204,7 @@
 						+ '<TD>' + jsondata[i].guochongdianbaohuyanchi
 						+ '</TD>' + '<TD>' + jsondata[i].coshuchufangshi
 						+ '</TD>' +
-
+'<TD><A href="/toDelete?id='+jsondata[i].id+'" >删除</A><A href="/toSecondaryAddEdit?id='+jsondata[i].id+'" >编辑</A></TD>' +
 						'</TR>';
 				s = s + temps;
 

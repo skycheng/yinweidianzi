@@ -1,4 +1,5 @@
 ﻿
+
 <!DOCTYPE HTML>
 
 <HTML>
@@ -102,7 +103,7 @@
 						$(function() {
 								$.ajax({
 									type : 'Get',
-									url : '/findAllSingleSectionts',
+									url : '/findAllErheyis',
 									data : {},
 									success : function(jsondata) {
 										initdata(jsondata);
@@ -114,7 +115,7 @@
 							function search() {
 								$.ajax({
 									type : 'POST',
-									url : '/findSingleSectionsByPartNumOrPackage',
+									url : '/findErheyisByPartNumOrPackage',
 						
 									data : {
 										p : $("#CtrlTop1_tbText").val()
@@ -134,6 +135,7 @@
 									'<TR>' +
 									'<TH  >产品型号</TH>' +
 									'<TH   >封装形式</TH>' +
+									'<TH   >品牌</TH>' +
 									'<TH   >过充阀<BR>值(v)</TH>' +
 									'<TH   >过放阀<BR>值(v)</TH>' +
 						
@@ -149,7 +151,7 @@
 									'<TH   >OV<BR>充电</TH>' +
 									'<TH   >漏源间<BR>击穿电<BR>压（v)</TH>' +
 									'<TH   >RSS(ON<BR>)@3.9V<BR>(mO)</TH>' +
-						
+						 '<TH   >操作</TH>' +
 									'</TR>' +
 						
 									'</THEAD>' +
@@ -158,24 +160,27 @@
 									var temps = '<TR>' +
 										'<TD><A ' +
 										'href="'+jsondata[i].pdf+'"' +
-										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
+										' target="_blank">' + jsondata[i].a + '</A></TD>' +
 						
-										'<TD>' + jsondata[i].package2 + '</TD>' +
-										'<TD>' + jsondata[i].guochongfazhi + '</TD>' +
-										'<TD>' + jsondata[i].guofangfazhi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].guochongbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].guofangbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumiangonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumianzihuifu + '</TD>' +
-										'<TD>' + jsondata[i].oychongdian + '</TD>' +
-										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
-										'<TD>' + jsondata[i].rss + '</TD>' +
-										'</TR>';
+										'<TD>' + jsondata[i].b + '</TD>' +
+										'<TD>' + jsondata[i].c + '</TD>' +
+										'<TD>' + jsondata[i].d + '</TD>' +
+										'<TD>' + jsondata[i].e + '</TD>' +
+										'<TD>' + jsondata[i].f + '</TD>' +
+										'<TD>' + jsondata[i].g + '</TD>' +
+										'<TD>' + jsondata[i].h + '</TD>' +
+										'<TD>' + jsondata[i].i + '</TD>' +
+										'<TD>' + jsondata[i].j + '</TD>' +
+										'<TD>' + jsondata[i].k + '</TD>' +
+										'<TD>' + jsondata[i].l + '</TD>' +
+										'<TD>' + jsondata[i].m + '</TD>' +
+										'<TD>' + jsondata[i].n + '</TD>' +
+										'<TD>' + jsondata[i].o + '</TD>' +
+										'<TD>' + jsondata[i].p + '</TD>' +
+										'<TD>' + jsondata[i].q + '</TD>' +
+										
+										'<TD><A href="/toErheyiDelete?id='+jsondata[i].id+'" >删除</A><A href="/toErheyiAddEdit?id='+jsondata[i].id+'" >编辑</A></TD>' +
+						'</TR>';
 									s = s + temps;
 						
 								}
@@ -223,25 +228,27 @@
 								for (var i = 0; i < jsondata.length; i++) {
 									var temps = '<TR>' +
 										'<TD><A ' +
-										'href="#"' +
-										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
+										'href="'+jsondata[i].pdf+'"' +
+										' target="_blank">' + jsondata[i].a + '</A></TD>' +
 						
-										'<TD>' + jsondata[i].package2 + '</TD>' +
-										'<TD>' + jsondata[i].guochongfazhi + '</TD>' +
-										'<TD>' + jsondata[i].guofangfazhi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliufazhi + '</TD>' +
-										'<TD>' + jsondata[i].guochongbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].guofangbaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].fangdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].chongdianguoliubaohuyanchi + '</TD>' +
-										'<TD>' + jsondata[i].zhengchanggonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumiangonghao + '</TD>' +
-										'<TD>' + jsondata[i].xiumianzihuifu + '</TD>' +
-										'<TD>' + jsondata[i].oychongdian + '</TD>' +
-										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
-										'<TD>' + jsondata[i].rss + '</TD>' +
-										'</TR>';
+										'<TD>' + jsondata[i].b + '</TD>' +
+										'<TD>' + jsondata[i].c + '</TD>' +
+										'<TD>' + jsondata[i].d + '</TD>' +
+										'<TD>' + jsondata[i].e + '</TD>' +
+										'<TD>' + jsondata[i].f + '</TD>' +
+										'<TD>' + jsondata[i].g + '</TD>' +
+										'<TD>' + jsondata[i].h + '</TD>' +
+										'<TD>' + jsondata[i].i + '</TD>' +
+										'<TD>' + jsondata[i].j + '</TD>' +
+										'<TD>' + jsondata[i].k + '</TD>' +
+										'<TD>' + jsondata[i].l + '</TD>' +
+										'<TD>' + jsondata[i].m + '</TD>' +
+										'<TD>' + jsondata[i].n + '</TD>' +
+										'<TD>' + jsondata[i].o + '</TD>' +
+										'<TD>' + jsondata[i].p + '</TD>' +
+										'<TD>' + jsondata[i].q + '</TD>' +
+										'<TD><A href="/toErheyiDelete?id='+jsondata[i].id+'" >删除</A><A href="/toErheyiAddEdit?id='+jsondata[i].id+'" >编辑</A></TD>' +
+						'</TR>';
 									s = s + temps;
 						
 								}
@@ -255,3 +262,4 @@
 					</script>
 </BODY>
 </HTML>
+

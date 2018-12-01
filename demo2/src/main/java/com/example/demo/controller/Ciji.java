@@ -15,6 +15,15 @@ public class Ciji {
 	private String guochongdianchizhidianya;
 	private String guochongdianbaohuyanchi;
 	private String coshuchufangshi;
+	private String pdf;
+
+	public String getPdf() {
+		return pdf;
+	}
+
+	public void setPdf(String pdf) {
+		this.pdf = pdf;
+	}
 
 	public Ciji() {
 

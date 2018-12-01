@@ -149,7 +149,7 @@
 									'<TH   >OV<BR>充电</TH>' +
 									'<TH   >漏源间<BR>击穿电<BR>压（v)</TH>' +
 									'<TH   >RSS(ON<BR>)@3.9V<BR>(mO)</TH>' +
-						
+						'<TH   >操作</TH>' +
 									'</TR>' +
 						
 									'</THEAD>' +
@@ -175,7 +175,8 @@
 										'<TD>' + jsondata[i].oychongdian + '</TD>' +
 										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
 										'<TD>' + jsondata[i].rss + '</TD>' +
-										'</TR>';
+										'<TD><A href="/toSingleSectionDelete?id='+jsondata[i].id+'" >删除</A><A href="/toSingleSectionAddEdit?id='+jsondata[i].id+'" >编辑</A></TD>' +
+						'</TR>';
 									s = s + temps;
 						
 								}
@@ -223,7 +224,7 @@
 								for (var i = 0; i < jsondata.length; i++) {
 									var temps = '<TR>' +
 										'<TD><A ' +
-										'href="#"' +
+										'href="'+jsondata[i].pdf+'"' +
 										' target="_blank">' + jsondata[i].partnum + '</A></TD>' +
 						
 										'<TD>' + jsondata[i].package2 + '</TD>' +
@@ -241,7 +242,8 @@
 										'<TD>' + jsondata[i].oychongdian + '</TD>' +
 										'<TD>' + jsondata[i].louyuanjianjichuandianya + '</TD>' +
 										'<TD>' + jsondata[i].rss + '</TD>' +
-										'</TR>';
+										'<TD><A href="/toSingleSectionDelete?id='+jsondata[i].id+'" >删除</A><A href="/toSingleSectionAddEdit?id='+jsondata[i].id+'" >编辑</A></TD>' +
+						'</TR>';
 									s = s + temps;
 						
 								}
