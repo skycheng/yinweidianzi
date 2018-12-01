@@ -30,14 +30,14 @@ public class CijiController2 {
 		
 
 		model.addAttribute("ciji", ciji);
-		return "secondary_add_edit.html";
+		return "secondary_add_edit";
 		
 	}
 
 	@RequestMapping("/secondaryAddEdit")
 	public String secondaryAddEdit(Ciji ciji) {
 		repository.save(ciji);
-		return "redirect:/secondaryAdmin";
+		return "redirect:/secondaryList.htm";
 	}
 
 	@RequestMapping("/toDelete")
