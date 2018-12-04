@@ -2,16 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>添加编辑次级保护IC</title>
+    <title>添加编辑 单节锂电保护IC</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css"  th:href="@{css/bootstrap.css}" type="text/css"/>
 </head>
 <body class="container">
 <br />
-<h1>添加编辑次级保护IC</h1>
+<h1>添加编辑 单节锂电保护IC</h1>
 <br /><br />
 <div class="with:80%">
-    <form class="form-horizontal" method="post" action="/secondaryAddEdit" th:object="${ciji}" >
+    <form class="form-horizontal" method="post" action="SingleSectionAddEdit" th:object="${ciji}" >
     <input type="hidden" name="id" th:value="*{id}" />
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">产品型号</label>
@@ -148,9 +148,9 @@
 		    contentType: false
 		}).done(function(res) {
 		$('#pdf').val(res);
-		alert(res);
+		//alert(res);
 		}).fail(function(res) {
-		alert(res);
+		//alert(res);
 		});
 	}
  
