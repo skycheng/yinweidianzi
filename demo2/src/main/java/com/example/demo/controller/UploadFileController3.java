@@ -31,7 +31,7 @@ public class UploadFileController3 {
         }
         try {
             file.transferTo(dest); //保存文件
-            return "http://localhost:8889/pdf" + "/" + fileName;
+            return "http://localhost:8889/uploadPdf" + "/" + fileName;
         } catch (IllegalStateException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
