@@ -16,7 +16,7 @@
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">产品型号</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="xinghao" id="xinghao" th:value="*{xinghao}"/>
+                <input type="text" class="form-control" name="partnum" id="partnum" th:value="*{partnum}"/>
             </div>
         </div>
         <div class="form-group">
@@ -32,33 +32,94 @@
 			</div>
         
         <div class="form-group">
-            <label for="password" class="col-sm-2 control-label">正常功耗</label>
+            <label for="password" class="col-sm-2 control-label">封装形式</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="package2" id="package2"  th:value="*{package2}"/>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">过充阀值(v)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="guochongfazhi" id="guochongfazhi"  th:value="*{guochongfazhi}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">过放阀值(v)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="guofangfazhi" id="guofangfazhi"  th:value="*{guofangfazhi}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">放电过流阀值(v)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="fangdianguoliufazhi" id="fangdianguoliufazhi"  th:value="*{fangdianguoliufazhi}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">充电过流阀值(v)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="chongdianguoliufazhi" id="chongdianguoliufazhi"  th:value="*{chongdianguoliufazhi}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">过充保护延时(s)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="guochongbaohuyanchi" id="guochongbaohuyanchi"  th:value="*{guochongbaohuyanchi}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">过放保护延时(ms)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="guofangbaohuyanchi" id="guofangbaohuyanchi"  th:value="*{guofangbaohuyanchi}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">放电过流保护延时(ms)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="fangdianguoliubaohuyanchi" id="fangdianguoliubaohuyanchi"  th:value="*{fangdianguoliubaohuyanchi}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">充电过流保护延时(ms)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="chongdianguoliubaohuyanchi" id="chongdianguoliubaohuyanchi"  th:value="*{chongdianguoliubaohuyanchi}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">正常功耗(uA)</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="zhengchanggonghao" id="zhengchanggonghao"  th:value="*{zhengchanggonghao}"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="age" class="col-sm-2 control-label">过充电检测电压VOVP±25mV</label>
+            <label for="age" class="col-sm-2 control-label">休眠功耗(uA)</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="guochongdianjiancedianya" id="guochongdianjiancedianya"  th:value="*{guochongdianjiancedianya}"/>
+                <input type="text" class="form-control" name="xiumiangonghao" id="xiumiangonghao"  th:value="*{xiumiangonghao}"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="age" class="col-sm-2 control-label">过充电迟滞电压VHYS±50mV</label>
+            <label for="age" class="col-sm-2 control-label">休眠自恢复</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="guochongdianchizhidianya" id="guochongdianchizhidianya"  th:value="*{guochongdianchizhidianya}"/>
+                <input type="text" class="form-control" name="xiumianzihuifu" id="xiumianzihuifu"  th:value="*{xiumianzihuifu}"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="age" class="col-sm-2 control-label">过充电保护延时TOVP±30%</label>
+            <label for="age" class="col-sm-2 control-label">OV充电</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="guochongdianbaohuyanchi" id="guochongdianbaohuyanchi"  th:value="*{guochongdianbaohuyanchi}"/>
+                <input type="text" class="form-control" name="oychongdian" id="oychongdian"  th:value="*{oychongdian}"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="age" class="col-sm-2 control-label">CO输出方式</label>
+            <label for="age" class="col-sm-2 control-label">漏源间击穿电压（v)</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="coshuchufangshi" id="coshuchufangshi"  th:value="*{coshuchufangshi}"/>
+                <input type="text" class="form-control" name="louyuanjianjichuandianya" id="louyuanjianjichuandianya"  th:value="*{louyuanjianjichuandianya}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">RSS(ON)@3.9V(mO)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="rss" id="rss"  th:value="*{rss}"/>
             </div>
         </div>
         <div class="form-group">

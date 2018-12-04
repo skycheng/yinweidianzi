@@ -73,20 +73,12 @@
 			<!--右侧内容-->
 
 			<DIV>
-				<DIV >
-				
-					<A class="outInfo" id="btn123">下载表格</A> 点击下面表格的表头进行筛选
-					
-					
-				</DIV>
-
-
-					<DIV class="searchCon">
-						<INPUT name="CtrlTop1$tbText" class="search" id="CtrlTop1_tbText"
-							type="text"> <INPUT name="CtrlTop1$btnFind"
-							class="searchBtn" id="CtrlTop1_btnFind" value=''
-							onclick='search()'>
-					</DIV>
+				<div class="form-group">
+					<div class="col-sm-2 control-label">
+						<a href="/toErheyiAddEdit?id=-1" th:href="@{/toErheyiAddEdit}"
+							class="outInfo">添加</a>
+					</div>
+				</div>
 
 				<TABLE class="dataTb" id="deviceTable" border="0" cellspacing="0"
 					cellpadding="0">

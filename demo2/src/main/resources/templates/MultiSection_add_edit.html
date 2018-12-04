@@ -11,12 +11,12 @@
 <h1>添加编辑次级保护IC</h1>
 <br /><br />
 <div class="with:80%">
-    <form class="form-horizontal" method="post" action="/secondaryAddEdit" th:object="${ciji}" >
+    <form class="form-horizontal" method="post" action="/MultiSectionAddEdit" th:object="${ciji}" >
     <input type="hidden" name="id" th:value="*{id}" />
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">产品型号</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="xinghao" id="xinghao" th:value="*{xinghao}"/>
+                <input type="text" class="form-control" name="partnum" id="partnum" th:value="*{partnum}"/>
             </div>
         </div>
         <div class="form-group">
@@ -32,33 +32,75 @@
 			</div>
         
         <div class="form-group">
-            <label for="password" class="col-sm-2 control-label">正常功耗</label>
+            <label for="password" class="col-sm-2 control-label">封装形式</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="package2" id="package2"  th:value="*{package2}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">功耗ICC</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="zhengchanggonghao" id="zhengchanggonghao"  th:value="*{zhengchanggonghao}"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="age" class="col-sm-2 control-label">过充电检测电压VOVP±25mV</label>
+            <label for="age" class="col-sm-2 control-label">过充电检测电压</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="guochongdianjiancedianya" id="guochongdianjiancedianya"  th:value="*{guochongdianjiancedianya}"/>
+                <input type="text" class="form-control" name="jiancedianyaguochongdian" id="jiancedianyaguochongdian"  th:value="*{jiancedianyaguochongdian}"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="age" class="col-sm-2 control-label">过充电迟滞电压VHYS±50mV</label>
+            <label for="age" class="col-sm-2 control-label">过充电解除电压</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="guochongdianchizhidianya" id="guochongdianchizhidianya"  th:value="*{guochongdianchizhidianya}"/>
+                <input type="text" class="form-control" name="jiechudianyaguochongdian" id="jiechudianyaguochongdian"  th:value="*{jiechudianyaguochongdian}"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="age" class="col-sm-2 control-label">过充电保护延时TOVP±30%</label>
+            <label for="age" class="col-sm-2 control-label">过放电检测电压</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="guochongdianbaohuyanchi" id="guochongdianbaohuyanchi"  th:value="*{guochongdianbaohuyanchi}"/>
+                <input type="text" class="form-control" name="jiancedianyaguofangdian" id="jiancedianyaguofangdian"  th:value="*{jiancedianyaguofangdian}"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="age" class="col-sm-2 control-label">CO输出方式</label>
+            <label for="age" class="col-sm-2 control-label">过放电解除电压</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="coshuchufangshi" id="coshuchufangshi"  th:value="*{coshuchufangshi}"/>
+                <input type="text" class="form-control" name="jiechudianyaguofangdian" id="jiechudianyaguofangdian"  th:value="*{jiechudianyaguofangdian}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">放电过流1检测电压</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="jiancedianya1fangdianguoliu" id="jiancedianya1fangdianguoliu"  th:value="*{jiancedianya1fangdianguoliu}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">放电过流2检测电压</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="jiancedianya2fangdianguoliu" id="jiancedianya2fangdianguoliu"  th:value="*{jiancedianya2fangdianguoliu}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">短路检测电压</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="jiancedianyaduanlu" id="jiancedianyaduanlu"  th:value="*{jiancedianyaduanlu}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">充电过流检测电压</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="jiancedianyachongdianguoliu" id="jiancedianyachongdianguoliu"  th:value="*{jiancedianyachongdianguoliu}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">平衡启动电压</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="qidongdianyapingheng" id="qidongdianyapingheng"  th:value="*{qidongdianyapingheng}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">放电状态检测电压</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="fangdianzhuangtaijiancedianya" id="fangdianzhuangtaijiancedianya"  th:value="*{fangdianzhuangtaijiancedianya}"/>
             </div>
         </div>
         <div class="form-group">
