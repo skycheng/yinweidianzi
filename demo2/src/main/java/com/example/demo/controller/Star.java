@@ -2,19 +2,34 @@ package com.example.demo.controller;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Star {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String type;
 	private String name;
-	private String img;
+	
 	private String desc1;
 	private String desc2;
 	private String application;
+	private String pdf;
+	private String model;
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public String getPdf() {
+		return pdf;
+	}
+	public void setPdf(String pdf) {
+		this.pdf = pdf;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -33,12 +48,7 @@ public class Star {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
-	}
+	
 	public String getDesc1() {
 		return desc1;
 	}
