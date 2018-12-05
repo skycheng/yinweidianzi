@@ -24,7 +24,7 @@ public class UploadFileController3 {
         }
         String fileName = file.getOriginalFilename();
         
-        String path = "c:/uploadPdf" ;
+        String path = Utils.getPath() ;
         File dest = new File(path + "/" + fileName);
         if(!dest.getParentFile().exists()){ //判断文件父目录是否存在
             dest.getParentFile().mkdir();

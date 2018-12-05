@@ -10,7 +10,7 @@ public class MyWebAppConfigurer
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/uploadPdf/**").addResourceLocations("file:c:/uploadPdf/");
+        registry.addResourceHandler("/uploadPdf/**").addResourceLocations("file:"+Utils.getPath());
         super.addResourceHandlers(registry);
     }
 
