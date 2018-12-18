@@ -9,4 +9,6 @@ public class Utils {
 			return "/uploadPdf/";
 		}
 	}
+	
+	public static boolean IS_LOGINED = false;
 }
