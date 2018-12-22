@@ -67,7 +67,7 @@ public class StarController {
 	
 	@RequestMapping("/ShowStar")
 	public String showStar(Model model) {
-		Star ciji = findTop1Star();
+		Star ciji = findNewStar();
 
 		model.addAttribute("ciji", ciji);
 		return "star";

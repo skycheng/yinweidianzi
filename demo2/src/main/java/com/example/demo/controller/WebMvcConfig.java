@@ -13,6 +13,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 //addPathPattern后跟拦截地址，excludePathPatterns后跟排除拦截地址
-registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**").excludePathPatterns("/index").excludePathPatterns("/login.htm");
+registry.addInterceptor(new MyInterceptor()).
+addPathPatterns("/**List.htm").
+addPathPatterns("/**add_edit.html").
+addPathPatterns("/**admin.htm").
+excludePathPatterns("/logout").
+excludePathPatterns("/index").
+excludePathPatterns("/login.htm");
     }
 }

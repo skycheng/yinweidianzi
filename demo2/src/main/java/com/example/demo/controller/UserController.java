@@ -39,7 +39,7 @@ public class UserController {
 	
 	
 	@RequestMapping("/logout")
-	public String logout(int id,HttpSession session) {
+	public String logout(HttpSession session) {
 		Utils.IS_LOGINED = false;
 		session.removeAttribute("isLogin");
 		return "redirect:/login.htm";
