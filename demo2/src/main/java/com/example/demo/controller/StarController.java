@@ -78,7 +78,7 @@ public class StarController {
 	@RequestMapping("/StarAddEdit")
 	public String starAddEdit(Star ciji) {
 		repository.save(ciji);
-		return "redirect:/star.htm";
+		return "redirect:/admin.htm";
 	}
 
 	@RequestMapping("/ToStarDelete")

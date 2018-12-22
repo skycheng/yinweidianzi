@@ -17,6 +17,8 @@ registry.addInterceptor(new MyInterceptor()).
 addPathPatterns("/**List.htm").
 addPathPatterns("/**add_edit.html").
 addPathPatterns("/**admin.htm").
+addPathPatterns("/**ToStarAddEdit").
+excludePathPatterns("/ShowStar").
 excludePathPatterns("/logout").
 excludePathPatterns("/index").
 excludePathPatterns("/login.htm");
