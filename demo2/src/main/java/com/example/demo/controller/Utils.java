@@ -6,7 +6,8 @@ public class Utils {
 		if (os.toLowerCase().startsWith("win")) { // 如果是Windows系统  https://blog.csdn.net/ajklaclk/article/details/80804137
 			return "c:/uploadPdf/";
 		} else { // linux 和mac
-			return "/uploadPdf/";
+			String usrHome = System.getProperty("user.home");
+			return usrHome+"/uploadPdf/";
 		}
 	}
 	

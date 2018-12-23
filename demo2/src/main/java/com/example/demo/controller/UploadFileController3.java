@@ -20,7 +20,7 @@ public class UploadFileController3 {
     public String fileUpload(MultipartFile file){
     	
         if(file.isEmpty()){
-            return "false";
+            return "false1";
         }
         String fileName = file.getOriginalFilename();
         
@@ -35,11 +35,11 @@ public class UploadFileController3 {
         } catch (IllegalStateException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            return "false";
+            return "false2";
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            return "false";
+            return "false3";
         }
     }
 }
