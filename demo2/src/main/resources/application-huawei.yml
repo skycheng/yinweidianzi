@@ -1,0 +1,15 @@
+server:
+  port: 8889
+spring:
+  datasource:
+    url: jdbc:mysql://114.116.31.15:3306/firstdb?autoReconnect=true&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: nZx=Z@9A
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  thymeleaf:
+    cache: false
+
