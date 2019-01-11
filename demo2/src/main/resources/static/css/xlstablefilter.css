@@ -1,39 +1,57 @@
 #xlsFilterAllNone {
-	text-align: right;
+	text-align: right;	
 }
-#xlsFilterAll {
-	text-decoration: underline; cursor: pointer;
+
+#xlsFilterAll, #xlsFilterNone {
+	text-decoration: underline;
+	cursor: pointer;
 }
-#xlsFilterNone {
-	text-decoration: underline; cursor: pointer;
-}
+
 #xlsFilterRows {
-	border: 1px solid rgb(153, 153, 153); border-image: none; color: rgb(0, 0, 0); margin-top: 5px; background-color: rgb(242, 247, 252);
+	margin-top: 5px;
+	border: 1px solid #999999;
+	background-color: #F2F7FC;
+	color: #000000;
 }
+
 div.xlsFilterRow {
-	padding: 1px 1px 1px 32px; height: auto !important; text-indent: -12px; cursor: pointer; min-height: 18px;
+	min-height: 18px;
+	height: auto ! important;
+	cursor: pointer;
+	padding: 1px 1px 1px 32px;
+	text-indent: -12px;
 }
+
 div.xlsFilterRow:hover {
-	background-color: rgb(255, 255, 215);
+	background-color: #FFFFD7;
 }
+
 div.xlsFilterRow input {
-	margin: 0px 0px 0px 3px;
+	margin: 0px 0px 0px 3px;	
 }
+
 .xlsFilterCheck {
-	margin: 0px 5px 0px -30px; width: 16px; height: 16px; float: left;
+	float: left;
+	height: 16px;
+	width: 16px;
+	margin: 0px 5px 0px -30px;
 }
 #xlsFilterRows div.xlsFilterCheckOn {
-	background: url("../images/checkbox-on.png") no-repeat center;
+	background: url(../images/checkbox-on.png) center center no-repeat;
 }
+
 #xlsFilterRows div.xlsFilterCheckOff {
-	background: url("../images/checkbox-off.png") no-repeat center;
+	background: url(../images/checkbox-off.png) center center no-repeat;
 }
+
 .xlsFilterHeader {
-	cursor: pointer !important;
+	cursor: pointer !important;	
 }
+
 .xlsNoFilterHeader {
 	cursor: default !important;
 }
+
 .xlsFilteredColumn {
-	background-color: rgb(255, 255, 215) !important;
+	background-color: #FFFFD7 !important;
 }
